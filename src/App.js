@@ -1,7 +1,8 @@
-import "./App.css";
 import React, { lazy, Suspense } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
 import NavLinks from "./NavBar/NavLink";
+
 const HomePage = lazy(() => import("./Pages/Home"));
 const AccountPage = lazy(() => import("./Pages/Account"));
 const ServicePage = lazy(() => import("./Pages/Services"));
