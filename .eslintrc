@@ -15,7 +15,10 @@
   },
   "parserOptions": {
     "sourceType": "module",
-    "requireConfigFile": false
+    "requireConfigFile": false,
+    "babelOptions": {
+      "presets": ["@babel/preset-react"]
+    }
   },
   "rules": {
     "no-console": "off",
