@@ -1,0 +1,11 @@
+.Page-Container{
+    padding: 15px 15px;
+}
+
+.Service-Items{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+
+}

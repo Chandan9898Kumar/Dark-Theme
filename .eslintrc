@@ -1,19 +1,30 @@
 {
-  "extends": "eslint:recommended",
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "parser": "@babel/eslint-parser",
+  "ecmaFeatures": {
+    "modules": true,
+    "spread": true,
+    "restParams": true,
+    "experimentalObjectRestSpread": true
+  },
   "env": {
     "browser": true,
-    "commonjs": true,
     "node": true,
     "es6": true,
     "jest": true
   },
   "parserOptions": {
-    "ecmaVersion": 2018
+    "sourceType": "module",
+    "requireConfigFile": false
   },
   "rules": {
     "no-console": "off",
     "strict": ["warn", "global"],
-    "curly": "warn"
+    "curly": "warn",
+    "no-unused-vars": 0,
+    "no-undef": 0,
+    "comma-dangle": 0,
+    "react/prop-types": "off"
   },
   "overrides": [
     {
