@@ -1,9 +1,9 @@
-import React, { memo, useState } from "react";
-import "./modal.css";
-import PropTypes from "prop-types";
+import React, { memo, useState } from 'react';
+import './modal.css';
+import PropTypes from 'prop-types';
 
 const AddEditModal = ({
-  title = "Modal",
+  title = 'Modal',
   onCloseModal = () => {},
   userDetails = {},
   data = [],
@@ -11,16 +11,12 @@ const AddEditModal = ({
   isEdit = false,
   isAdd = false,
 }) => {
-  const [id, setId] = useState(userDetails?.id ? userDetails.id : "");
-  const [name, setName] = useState(userDetails?.name ? userDetails.name : "");
-  const [description, setDescription] = useState(
-    userDetails?.description ? userDetails.description : ""
-  );
-  const [price, setPrice] = useState(
-    userDetails?.price ? userDetails.price : ""
-  );
+  const [id, setId] = useState(userDetails?.id ? userDetails.id : '');
+  const [name, setName] = useState(userDetails?.name ? userDetails.name : '');
+  const [description, setDescription] = useState(userDetails?.description ? userDetails.description : '');
+  const [price, setPrice] = useState(userDetails?.price ? userDetails.price : '');
 
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
 
   const userEvents = {
     id: (value) => setId(value),
@@ -40,13 +36,9 @@ const AddEditModal = ({
     const payload = { id, name, description, price };
 
     if (isEdit) {
-      setData(
-        data.map((item) => (item.id === id ? { ...item, ...payload } : item))
-      );
+      setData(data.map((item) => (item.id === id ? { ...item, ...payload } : item)));
     } else if (isAdd) {
-      const existingItem = data.find(
-        (item) => parseInt(item.id) === parseInt(id)
-      );
+      const existingItem = data.find((item) => parseInt(item.id) === parseInt(id));
       if (existingItem) {
         setMessage(`User with ID ${id} already exists`);
         return;
@@ -68,47 +60,39 @@ const AddEditModal = ({
         </div>
 
         <div className="modal-body">
-          <label>
-            Id : {}
-            <input
-              disabled={isEdit}
-              type="text"
-              value={id}
-              onChange={(event) => handleChange(event.target.value, "id")}
-            />
-          </label>
-          <label>
-            Name : {}
-            <input
-              type="text"
-              value={name}
-              onChange={(event) => handleChange(event.target.value, "name")}
-            />
-          </label>
-          <label>
-            Description : {}
-            <input
-              type="text"
-              value={description}
-              onChange={(event) =>
-                handleChange(event.target.value, "description")
-              }
-            />
-          </label>
-          <label>
-            Price : {}
-            <input
-              type="text"
-              value={price}
-              onChange={(event) => handleChange(event.target.value, "price")}
-            />
-          </label>
+          <label>ID :</label>
+          <input
+            className="Input-Field"
+            disabled={isEdit}
+            type="text"
+            value={id}
+            onChange={(event) => handleChange(event.target.value, 'id')}
+          />
+          <label>Name :</label>
+          <input
+            className="Input-Field"
+            type="text"
+            value={name}
+            onChange={(event) => handleChange(event.target.value, 'name')}
+          />
+          <label>Description :</label>
+          <input
+            className="Input-Field"
+            type="text"
+            value={description}
+            onChange={(event) => handleChange(event.target.value, 'description')}
+          />
+          <label>Price :</label>
+          <input
+            className="Input-Field"
+            type="text"
+            value={price}
+            onChange={(event) => handleChange(event.target.value, 'price')}
+          />
         </div>
 
         <div className="modal-footer">
-          <button onClick={(event) => onCloseModal(event, false)}>
-            Cancel
-          </button>
+          <button onClick={(event) => onCloseModal(event, false)}>Cancel</button>
           <button onClick={(event) => handleProceed(event)}>Proceed</button>
         </div>
         {message && <h1>{message}</h1>}

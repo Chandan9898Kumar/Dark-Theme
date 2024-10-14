@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, createContext } from "react";
+import React, { useState, useEffect, useContext, createContext } from 'react';
 
 const ThemeContext = createContext();
 
@@ -12,27 +12,23 @@ export const useThemeContext = () => {
 };
 
 const ThemeManager = ({ children }) => {
-  const [isThemeDark, setIsThemeDark] = useState(
-    JSON.parse(localStorage.getItem("isThemeDark")) || false
-  );
+  const [isThemeDark, setIsThemeDark] = useState(JSON.parse(localStorage.getItem('isThemeDark')) || false);
 
-  localStorage.setItem("isThemeDark", JSON.stringify(isThemeDark));
+  localStorage.setItem('isThemeDark', JSON.stringify(isThemeDark));
 
   const toggleTheme = () => {
     setIsThemeDark(!isThemeDark);
   };
 
-  const THEME = isThemeDark ? "dark" : "light";
+  const THEME = isThemeDark ? 'dark' : 'light';
 
   useEffect(() => {
-    window.document.documentElement.setAttribute("data-theme", THEME);
+    window.document.documentElement.setAttribute('data-theme', THEME);
   }, [THEME]);
 
   return (
     <>
-      <ThemeContext.Provider value={{ isThemeDark, toggleTheme }}>
-        {children}
-      </ThemeContext.Provider>
+      <ThemeContext.Provider value={{ isThemeDark, toggleTheme }}>{children}</ThemeContext.Provider>
     </>
   );
 };

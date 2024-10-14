@@ -1,7 +1,7 @@
-import React, { memo, useState } from "react";
-import "./pages.css";
-import AddEditModal from "../Components/AddEditModal";
-const PRODUCT_DATA = require("../Constants/Product.json");
+import React, { memo, useState } from 'react';
+import './pages.css';
+import AddEditModal from '../Components/AddEditModal';
+const PRODUCT_DATA = require('../Constants/Product.json');
 
 const ServicePage = () => {
   const [data, setData] = useState(PRODUCT_DATA || []);
@@ -9,7 +9,7 @@ const ServicePage = () => {
   const [editUserDetails, setEditUserDetails] = useState({});
   const [isAddModalOPen, setIsAddModalOPen] = useState(false);
 
-  const handleEdit = (event = {}, condition = false, editItem = "") => {
+  const handleEdit = (event = {}, condition = false, editItem = '') => {
     setIsEditModalOPen(condition);
     setEditUserDetails(editItem);
   };
@@ -35,12 +35,8 @@ const ServicePage = () => {
               <p>{item.description}</p>
               <p>{item.price}</p>
 
-              <button onClick={(event) => handleEdit(event, true, item)}>
-                Edit
-              </button>
-              <button onClick={(event) => handleDelete(event, item, index)}>
-                Delete
-              </button>
+              <button onClick={(event) => handleEdit(event, true, item)}>Edit</button>
+              <button onClick={(event) => handleDelete(event, item, index)}>Delete</button>
             </div>
           );
         })}
@@ -57,14 +53,7 @@ const ServicePage = () => {
       )}
 
       {isAddModalOPen && (
-        <AddEditModal
-          key="add"
-          onCloseModal={handleAdd}
-          title="Add New User"
-          data={data}
-          setData={setData}
-          isAdd
-        />
+        <AddEditModal key="add" onCloseModal={handleAdd} title="Add New User" data={data} setData={setData} isAdd />
       )}
     </div>
   );

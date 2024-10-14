@@ -16,7 +16,6 @@
 /* Modal Content */
 .modal-content {
   position: relative;
-  background-color: #fefefe;
   margin: auto;
   padding: 0;
   border: 1px solid #888;
@@ -26,6 +25,9 @@
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
   animation-duration: 0.4s;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 /* Add Animation */
@@ -68,12 +70,37 @@
 
 .modal-header {
   padding: 2px 16px;
-  background-color: #5cb85c;
-  color: white;
 }
 
 .modal-body {
   padding: 2px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: normal;
+  flex-wrap: wrap;
+  gap: 15px;
+  text-align: justify;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.Input-Field {
+  font-size: 20px;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.Input-Field:disabled {
+  cursor: not-allowed;
+  box-shadow: 0 0 5px #eccdd4;
+}
+
+.Input-Field:focus {
+  outline: none;
+  box-shadow: 0 0 5px #ff6384;
 }
 
 .modal-footer {
