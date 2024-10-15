@@ -35,3 +35,17 @@ const NavLinks = () => {
 };
 
 export default NavLinks;
+
+/**  We can use this  styling as well
+const navigationActive = ({ isActive ,isPending}) => {
+    return {
+      color: isPending ? 'pending' : isActive ? 'active' : 'In-Active,
+      textDecoration: "none",
+    };
+  }; 
+
+<NavLink style={navigationActive} to="home">Home</NavLink>
+<NavLink style={navigationActive} to="about">About</NavLink>
+<NavLink style={navigationActive} to="contact">Contact</NavLink>
+
+ */
