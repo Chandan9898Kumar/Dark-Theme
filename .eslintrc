@@ -42,9 +42,7 @@
       "extends": ["react-app", "react-app/jest"]
     },
     {
-      "files": [
-        "test/fixtures/webpack-message-formatting/src/{AppLintError,AppLintWarning,AppUnknownFile}.js"
-      ],
+      "files": ["test/fixtures/webpack-message-formatting/src/{AppLintError,AppLintWarning,AppUnknownFile}.js"],
       "rules": {
         "no-unused-vars": "off",
         "no-undef": "off"
@@ -62,5 +60,17 @@
         "no-dupe-class-members": "off"
       }
     }
-  ]
+  ],
+  //To Specify React version in eslint-plugin-react settings
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "webpack": {
+        "config": "config/webpack.common.js"
+      }
+    }
+  },
+  "ignorePatterns": ["dist", "node_modules", "webpack.*", "config/paths.js"]
 }
