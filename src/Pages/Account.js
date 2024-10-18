@@ -26,15 +26,21 @@ const AccountPage = () => {
   return (
     <div className="Page-Container">
       <h1>This is Account Page</h1>
-
-      {isLoading ? (
-        <div>Please Wait while your data is being loaded...</div>
-      ) : (
-        !!data?.length &&
-        data.map((item, index) => {
-          return <li key={item.id}>{item.description}</li>;
-        })
-      )}
+      <div className="Item-Main">
+        {isLoading ? (
+          <div>Please Wait while your data is being loaded...</div>
+        ) : (
+          !!data?.length &&
+          data.map((item) => {
+            return (
+              <div key={item.id} className="Item-Boxes">
+                <img src={item.images[0]} alt={`${item.title}`} loading="lazy" width={250} height={400} />
+                <label>{item.title}</label>
+              </div>
+            );
+          })
+        )}
+      </div>
       {isError && <div>{isError}</div>}
     </div>
   );

@@ -1,11 +1,35 @@
-.Page-Container{
-    padding: 15px 15px;
+.Page-Container {
+  padding: 15px 15px;
 }
 
-.Service-Items{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
+.Service-Items {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
+.Item-Main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.Item-Boxes {
+  flex-basis: 10%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid plum;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px 10px;
+  transition: all 0.8s;
+  &:hover {
+    background: white;
+    transform: scale(1.1);
+    margin: 10px 10px;
+    cursor: pointer;
+  }
 }
