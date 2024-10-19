@@ -25,7 +25,7 @@ const AccountPage = () => {
 
   return (
     <div className="Page-Container">
-      <h1>This is Account Page</h1>
+      <h1 style={{textAlign:'center'}}>This is Account Page Shows Images</h1>
       <div className="Item-Main">
         {isLoading ? (
           <div>Please Wait while your data is being loaded...</div>
@@ -34,7 +34,7 @@ const AccountPage = () => {
           data.map((item) => {
             return (
               <div key={item.id} className="Item-Boxes">
-                <img src={item.images[0]} alt={`${item.title}`} loading="lazy" width={250} height={400} />
+                <img className='Img-Responsive' src={item.images[0]} alt={`${item.title}`} loading="lazy" width={250} height={350} />
                 <label>{item.title}</label>
               </div>
             );
