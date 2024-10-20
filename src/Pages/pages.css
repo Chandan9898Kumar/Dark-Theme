@@ -17,11 +17,13 @@
   gap: 20px;
 }
 
-.Img-Responsive {
+.Img-Responsive img {
   transition: 1s ease;
   width: 100%;
-  aspect-ratio: 4/1;
-  object-fit: contain;
+  /*To  make all images of different height and width the same via CSS? use either : cover OR : scale-down */
+  /* object-fit: cover; */
+  /*Scale down will take the necessary specified space that is 100px x 100px without stretching the image*/
+  object-fit: scale-down;
 }
 
 .Item-Boxes {
@@ -44,4 +46,14 @@
     cursor: pointer;
     color: black;
   }
+}
+
+h1 {
+  text-decoration: underline;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 2px 2px 4px #e1d3d3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

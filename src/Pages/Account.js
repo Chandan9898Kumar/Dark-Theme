@@ -2,6 +2,7 @@ import React, { useEffect, memo } from 'react';
 import './pages.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { setData } from '../Redux/Account/AccountRedux';
+import { Link } from 'react-router-dom';
 const AccountPage = () => {
   const dispatch = useDispatch();
   const { data, isLoading, isError } = useSelector((state) => state.AccountPage);
@@ -25,7 +26,7 @@ const AccountPage = () => {
 
   return (
     <div className="Page-Container">
-      <h1 style={{textAlign:'center'}}>This is Account Page Shows Images</h1>
+      <h1>This is Account Page Shows Images</h1>
       <div className="Item-Main">
         {isLoading ? (
           <div>Please Wait while your data is being loaded...</div>
@@ -34,8 +35,17 @@ const AccountPage = () => {
           data.map((item) => {
             return (
               <div key={item.id} className="Item-Boxes">
-                <img className='Img-Responsive' src={item.images[0]} alt={`${item.title}`} loading="lazy" width={250} height={350} />
-                <label>{item.title}</label>
+                <Link to={`/account/${item.id}`}>
+                  <img
+                    className="Img-Responsive"
+                    src={item.images[0]}
+                    alt={`${item.title}`}
+                    loading="lazy"
+                    width={250}
+                    height={350}
+                  />
+                  <label>{item.title}</label>
+                </Link>
               </div>
             );
           })
