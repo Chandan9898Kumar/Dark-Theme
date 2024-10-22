@@ -22,12 +22,14 @@ const ServicePage = () => {
     setData(data.filter((removeItem) => removeItem.id !== item.id));
   };
 
-  return (
-    <div className="Page-Container">
-      <h1>Access Your Service</h1>
-      <button onClick={(event) => handleAdd(event, true)}>Add Item</button>
-      {!!data?.length &&
-        data.map((item, index) => {
+  const ShowHeader = () => {
+    return <h1>Access Your Service</h1>;
+  };
+
+  const ShowData = () => {
+    return (
+      <>
+        {data?.map((item, index) => {
           return (
             <div key={item.name + index} className="Service-Items">
               <p>{item.id}</p>
@@ -40,6 +42,15 @@ const ServicePage = () => {
             </div>
           );
         })}
+      </>
+    );
+  };
+
+  return (
+    <div className="Page-Container">
+      <ShowHeader />
+      <button onClick={(event) => handleAdd(event, true)}>Add Item</button>
+      {!!data?.length && <ShowData />}
       {isEditModalOPen && (
         <AddEditModal
           key="edit"

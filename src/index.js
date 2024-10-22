@@ -6,14 +6,17 @@ import reportWebVitals from './reportWebVitals';
 import ThemeManager from './ContextApi/ThemeManager';
 import Store from './Redux/store';
 import { Provider } from 'react-redux';
+import ErrorBoundary from './ErrorBoundary';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ThemeManager>
-      <Provider store={Store}>
-        <App />
-      </Provider>
-    </ThemeManager>
+    <ErrorBoundary fallback="Something Went Wrong Please Refresh The Page.">
+      <ThemeManager>
+        <Provider store={Store}>
+          <App />
+        </Provider>
+      </ThemeManager>
+    </ErrorBoundary>
   </React.StrictMode>
 );
 

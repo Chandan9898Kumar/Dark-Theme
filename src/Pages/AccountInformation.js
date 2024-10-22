@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import './pages.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchItemInfo } from '../Redux/Account/AccountInfoRedux';
+
 const AccountInformationPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -43,28 +44,41 @@ const AccountInformationPage = () => {
     fetchData();
   }, []);
 
+  const ShowHeader = () => {
+    return <h1>{`This Account page Shows information of of item whose id is : ${'  '} ${id} `}</h1>;
+  };
+
+  const ShowLoading = () => {
+    return <div style={textStyle}>Data is being loaded please wait...</div>;
+  };
+
+  const ShowData = () => {
+    return (
+      <div className="Grid-Parent">
+        <div className="Grid-Images">
+          <img
+            className="Img-Responsive"
+            src={images[0] ?? ''}
+            alt={`${title}`}
+            loading="lazy"
+            width={350}
+            height={450}
+          />
+          <label>{title}</label>
+        </div>
+        <div className="Grid-Details"></div>
+      </div>
+    );
+  };
+
+  const ShowError = () => {
+    return <div style={textStyle}>{isError}</div>;
+  };
   return (
     <>
-      <h1>{`This Account page Shows information of of item whose id is : ${'  '} ${id} `}</h1>
-      {isLoading ? (
-        <div style={textStyle}>Data is being loaded please wait...</div>
-      ) : (
-        <div className="Grid-Parent">
-          <div className="Grid-Images">
-            <img
-              className="Img-Responsive"
-              src={images[0] ?? ''}
-              alt={`${title}`}
-              loading="lazy"
-              width={350}
-              height={450}
-            />
-            <label>{title}</label>
-          </div>
-          <div className="Grid-Details"></div>
-        </div>
-      )}
-      {isError && <div style={textStyle}>{isError}</div>}
+      <ShowHeader />
+      {isLoading ? <ShowLoading /> : <ShowData />}
+      {isError && <ShowError />}
     </>
   );
 };
