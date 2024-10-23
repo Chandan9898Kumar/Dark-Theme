@@ -3,6 +3,30 @@ import './pages.css';
 import AddEditModal from '../Components/AddEditModal';
 const PRODUCT_DATA = require('../Constants/Product.json');
 
+const ShowHeader = () => {
+  return <h1>Access Your Service</h1>;
+};
+
+const ShowData = ({ data, handleEdit, handleDelete }) => {
+  return (
+    <>
+      {data?.map((item, index) => {
+        return (
+          <div key={item.name + index} className="Service-Items">
+            <p>{item.id}</p>
+            <p>{item.name}</p>
+            <p>{item.description}</p>
+            <p>{item.price}</p>
+
+            <button onClick={(event) => handleEdit(event, true, item)}>Edit</button>
+            <button onClick={(event) => handleDelete(event, item, index)}>Delete</button>
+          </div>
+        );
+      })}
+    </>
+  );
+};
+
 const ServicePage = () => {
   const [data, setData] = useState(PRODUCT_DATA || []);
   const [isEditModalOPen, setIsEditModalOPen] = useState(false);
@@ -22,35 +46,11 @@ const ServicePage = () => {
     setData(data.filter((removeItem) => removeItem.id !== item.id));
   };
 
-  const ShowHeader = () => {
-    return <h1>Access Your Service</h1>;
-  };
-
-  const ShowData = () => {
-    return (
-      <>
-        {data?.map((item, index) => {
-          return (
-            <div key={item.name + index} className="Service-Items">
-              <p>{item.id}</p>
-              <p>{item.name}</p>
-              <p>{item.description}</p>
-              <p>{item.price}</p>
-
-              <button onClick={(event) => handleEdit(event, true, item)}>Edit</button>
-              <button onClick={(event) => handleDelete(event, item, index)}>Delete</button>
-            </div>
-          );
-        })}
-      </>
-    );
-  };
-
   return (
     <div className="Page-Container">
       <ShowHeader />
       <button onClick={(event) => handleAdd(event, true)}>Add Item</button>
-      {!!data?.length && <ShowData />}
+      {!!data?.length && <ShowData data={data} handleEdit={handleEdit} handleDelete={handleDelete} />}
       {isEditModalOPen && (
         <AddEditModal
           key="edit"
