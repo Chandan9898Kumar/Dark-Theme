@@ -21,7 +21,8 @@ const ShowLoading = () => {
   return <div style={textStyle}>Data is being loaded please wait...</div>;
 };
 
-const ShowData = ({ images, title }) => {
+const ShowData = ({ images, title, ...rest }) => {
+  const navigate = useNavigate();
   return (
     <div className="Grid-Parent">
       <div className="Grid-Images">
@@ -29,13 +30,45 @@ const ShowData = ({ images, title }) => {
           className="Img-Responsive"
           src={images[0] ?? ''}
           alt={`${title}`}
-          loading="lazy"
+          loading="eager"
           width={350}
           height={450}
         />
         <label>{title}</label>
       </div>
-      <div className="Grid-Details"></div>
+      <div className="Grid-Details">
+        <div className="parent">
+          <p>
+            Brand : {'  '}
+            {rest.brand ?? 'N/A'}
+          </p>
+          <p>
+            Category : {'  '}
+            {rest.category}
+          </p>
+          <p>
+            Price : {'  '}
+            {rest.price}
+          </p>
+
+          <p>
+            description : {'  '}
+            {rest.description}
+          </p>
+          <p>
+            shippingInformation : {'  '}
+            {rest.shippingInformation}
+          </p>
+          <p>
+            warrantyInformation : {'  '}
+            {rest.warrantyInformation}
+          </p>
+
+          <button className="Go-Back" onClick={() => navigate(-1)}>
+            Go Back
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
@@ -43,7 +76,6 @@ const ShowData = ({ images, title }) => {
 const AccountInformationPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const { data, isLoading, isError } = useSelector((state) => state.AccountInfoPage);
 
@@ -77,7 +109,20 @@ const AccountInformationPage = () => {
   return (
     <>
       <ShowHeader id={id} />
-      {isLoading ? <ShowLoading /> : <ShowData images={images} title={title} />}
+      {isLoading ? (
+        <ShowLoading />
+      ) : (
+        <ShowData
+          images={images}
+          title={title}
+          brand={brand}
+          category={category}
+          description={description}
+          shippingInformation={shippingInformation}
+          warrantyInformation={warrantyInformation}
+          price={price}
+        />
+      )}
       {isError && <ShowError />}
     </>
   );

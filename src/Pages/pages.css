@@ -60,8 +60,8 @@ h1 {
 
 .Grid-Parent {
   display: grid;
-  grid-template-columns: 3fr 4fr;
-  gap: 20px;
+  grid-template-columns: 1.5fr 3fr;
+  gap: 10px;
 }
 
 .Grid-Images {
@@ -96,4 +96,25 @@ h1 {
     color: black;
     transition: all 1s;
   }
+}
+
+.parent {
+  padding: 20px 20px;
+  text-align: justify;
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: capitalize;
+  overflow: hidden;
+  line-height: 30px;
+  text-wrap: pretty;
+}
+
+.Go-Back {
+  font-size: 25px;
+  font-weight: 500;
+  border: -r;
+  border-radius: 10px;
+  padding: 5px 5px;
+  cursor: pointer;
+  margin: auto;
 }
