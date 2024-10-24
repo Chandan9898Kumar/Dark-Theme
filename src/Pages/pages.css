@@ -118,3 +118,16 @@ h1 {
   cursor: pointer;
   margin: auto;
 }
+
+dt {
+  font-weight: 500;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 4px;
+  text-shadow: 2px 2px 8px;
+}
+
+dd {
+  padding: 15px 20px;
+}

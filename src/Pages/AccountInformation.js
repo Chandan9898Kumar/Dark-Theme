@@ -38,32 +38,20 @@ const ShowData = ({ images, title, ...rest }) => {
       </div>
       <div className="Grid-Details">
         <div className="parent">
-          <p>
-            Brand : {'  '}
-            {rest.brand ?? 'N/A'}
-          </p>
-          <p>
-            Category : {'  '}
-            {rest.category}
-          </p>
-          <p>
-            Price : {'  '}
-            {rest.price}
-          </p>
-
-          <p>
-            description : {'  '}
-            {rest.description}
-          </p>
-          <p>
-            shippingInformation : {'  '}
-            {rest.shippingInformation}
-          </p>
-          <p>
-            warrantyInformation : {'  '}
-            {rest.warrantyInformation}
-          </p>
-
+          <dl>
+            <dt>Brand:</dt>
+            <dd>{rest.brand ?? 'N/A'}</dd>
+            <dt>Category:</dt>
+            <dd>{rest.category}</dd>
+            <dt>Price:</dt>
+            <dd>{rest.price}</dd>
+            <dt>Description:</dt>
+            <dd>{rest.description}</dd>
+            <dt>Shipping Information:</dt>
+            <dd>{rest.shippingInformation}</dd>
+            <dt>Warranty Information:</dt>
+            <dd>{rest.warrantyInformation}</dd>
+          </dl>
           <button className="Go-Back" onClick={() => navigate(-1)}>
             Go Back
           </button>
@@ -129,3 +117,8 @@ const AccountInformationPage = () => {
 };
 
 export default memo(AccountInformationPage);
+
+/**  Above we have used dl,dt, and dd
+ * dl (definition list) element, which is a more semantic and accessible way to present key-value pairs.
+ * Used dt (definition term) elements for the labels and dd (definition description) elements for the values.
+ */
