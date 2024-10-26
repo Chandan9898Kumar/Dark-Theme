@@ -26,6 +26,13 @@ const NavLinks = () => {
         >
           Service Page
         </NavLink>
+
+        <NavLink
+          to="/country"
+          className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : 'In-Active')}
+        >
+          Country
+        </NavLink>
       </div>
       <div className="Input-Checkbox">
         <input type="checkbox" checked={isThemeDark} onChange={toggleTheme} />
