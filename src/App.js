@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import NavLinks from './NavBar/NavLink';
-import ToDoMenuDrawer, { Country, country, CountryAddress, CountryId } from './Pages/Country';
+import ToDoMenuDrawer, { Country, CountryPlace, CountryAddress, CountryId } from './Pages/Country';
 const HomePage = lazy(() => import('./Pages/Home'));
 const AccountPage = lazy(() => import('./Pages/Account'));
 const ServicePage = lazy(() => import('./Pages/Services'));
@@ -24,8 +24,9 @@ function App() {
           {/* This ToDoMenuDrawer is Nested Routing */}
           <Route path="/country" element={<ToDoMenuDrawer />}>
             <Route index element={<Country />} />
-            <Route path="ids" element={<CountryId />} />
+            <Route path="place" element={<CountryPlace />} />
             <Route path="address" element={<CountryAddress />} />
+            <Route path=":id" element={<CountryId />} />
           </Route>
 
           <Route path="*" element={<Error />} />

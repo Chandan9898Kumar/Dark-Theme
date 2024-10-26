@@ -1,5 +1,7 @@
 import React from 'react';
-import { Outlet, NavLink } from 'react-router-dom';
+import { Outlet, NavLink, Link } from 'react-router-dom';
+import './pages.css';
+
 export const Country = () => {
   return (
     <>
@@ -8,10 +10,10 @@ export const Country = () => {
   );
 };
 
-export const CountryId = () => {
+export const CountryPlace = () => {
   return (
     <>
-      <h1>This is German Id</h1>
+      <h1>This is German Place</h1>
     </>
   );
 };
@@ -24,43 +26,54 @@ export const CountryAddress = () => {
   );
 };
 
+export const CountryId = () => {
+  return (
+    <>
+      <h1>This is German Id </h1>
+    </>
+  );
+};
+
 export const ToDoSideDrawer = ({ children }) => {
   return (
-    <div className="SideDrawerHead">
-      {children}
-      <div className="outlet-component">
+    <>
+      <div className="sidebar">{children}</div>
+      <div className="outlet">
         <Outlet />
       </div>
-    </div>
+      <Link to="7">Click To Go On Id Page</Link>
+    </>
   );
 };
 
 const ToDoNavLinkSideContent = () => {
+  const styles = {
+    display: 'flex',
+    gap: '10px',
+    padding: '10px',
+  };
+
   return (
-    <div className="side-bar-sub-head-link">
-      <div className="div-Width">
-        <NavLink to="/country" caseSensitive className={({ isActive }) => (isActive ? 'isActiveLink' : 'staticLink')}>
-          Country
-        </NavLink>
-      </div>
-      <div className="div-Width">
-        <NavLink
-          to="/country/ids"
-          caseSensitive
-          className={({ isActive }) => (isActive ? 'isActiveLink' : 'staticLink')}
-        >
-          Country Ids
-        </NavLink>
-      </div>
-      <div className="div-Width">
-        <NavLink
-          to="/country/address"
-          caseSensitive
-          className={({ isActive }) => (isActive ? 'isActiveLink' : 'staticLink')}
-        >
-          Country address
-        </NavLink>
-      </div>
+    <div style={styles}>
+      <NavLink to="/country" caseSensitive className={({ isActive }) => (isActive ? 'isActiveLink' : 'staticLink')}>
+        Country
+      </NavLink>
+
+      <NavLink
+        to="/country/place"
+        caseSensitive
+        className={({ isActive }) => (isActive ? 'isActiveLink' : 'staticLink')}
+      >
+        Country place
+      </NavLink>
+
+      <NavLink
+        to="/country/address"
+        caseSensitive
+        className={({ isActive }) => (isActive ? 'isActiveLink' : 'staticLink')}
+      >
+        Country address
+      </NavLink>
     </div>
   );
 };
