@@ -131,3 +131,40 @@ dt {
 dd {
   padding: 15px 20px;
 }
+
+
+.s-layout {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+.side-bar-sub-head-link {
+  position: relative;
+  width: 260px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  flex-direction: column;
+  gap: 50px;
+  padding: 10px 20px;
+}
+
+.SideDrawerHead {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+ 
+  height: 100%;
+  position: relative;
+  gap: 20px;
+}
+.outlet-component {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  word-break: break-all;
+  word-wrap: normal;
+
+  flex: 1;
+}

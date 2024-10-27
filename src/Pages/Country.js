@@ -4,9 +4,12 @@ import './pages.css';
 
 export const Country = () => {
   return (
-    <>
-      <h1>This is German Country</h1>
-    </>
+    <div>
+      <h2>
+        This is German Country 
+      </h2>
+      <p>This Where people wants to go and to get education.</p>
+    </div>
   );
 };
 
@@ -36,25 +39,27 @@ export const CountryId = () => {
 
 export const ToDoSideDrawer = ({ children }) => {
   return (
-    <>
-      <div className="sidebar">{children}</div>
-      <div className="outlet">
+    <div className='s-layout'>
+      <div className="SideDrawerHead">{children}</div>
+      <div className="outlet-component">
         <Outlet />
       </div>
-      <Link to="7">Click To Go On Id Page</Link>
-    </>
+    </div>
   );
 };
 
 const ToDoNavLinkSideContent = () => {
   const styles = {
     display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'baseline',
     gap: '10px',
-    padding: '10px',
+    padding: '10px 10px',
   };
 
   return (
-    <div style={styles}>
+    <div className="side-bar-sub-head-link">
       <NavLink to="/country" caseSensitive className={({ isActive }) => (isActive ? 'isActiveLink' : 'staticLink')}>
         Country
       </NavLink>
@@ -74,6 +79,7 @@ const ToDoNavLinkSideContent = () => {
       >
         Country address
       </NavLink>
+      <Link to="7">Click To Go On Id Page</Link>
     </div>
   );
 };
