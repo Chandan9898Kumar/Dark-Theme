@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: app-prod-c
+    image: app-prod-i
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+        - "8080:80"
+
+
+
+
+
+# 1. To Build production image :
+# docker-compose -f docker-compose.prod.yml build
+
+
+# 2. Start our production container on port 80 with the name react-app :
+# docker run -p 8080:80 --name react-app app-prod

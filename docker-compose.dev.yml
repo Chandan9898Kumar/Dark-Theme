@@ -1,0 +1,46 @@
+#  version : Specifies the version of the Docker Compose file format.
+version: "3.8"
+
+# services: Defines the services that make up your application. 
+services:
+
+  # react-app: The name of the service.
+  react-app:
+
+    restart: on-failure
+
+    container_name: app-dev-c
+
+#  image: Specifies the image name. Docker Compose will build the image from the Dockerfile if it doesn’t already exist.
+    image: app-dev-i
+
+#  build: Defines the build context and Dockerfile for the service.
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+
+#  ports: Maps port 3000 on the host to port 5000 in the container.
+    ports:
+      - "3000:3000"
+
+    volumes:
+      - ./src:/app/src
+    # volumes:
+    #   - /app/node_modules
+    #   - .:/app
+
+    environment:
+    # - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+
+
+# 1. Let's start our React app for development!
+# docker-compose -f docker-compose.dev.yml up
+
+# Run your app using:
+
+# docker-compose up
+# docker-compose down
+
+
+#  NOTE : on a Windows machine:  -e CHOKIDAR_USEPOLLING=true, it was updating the code inside the container but the changes were not displaying on the browser, use -e WATCHPACK_POLLING=true instead.

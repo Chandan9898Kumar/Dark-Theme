@@ -25,7 +25,10 @@
     "lint:check": "npm run lint:types && eslint ./core --ext .tsx,.ts,.js,.jsx",
     "lint": "eslint src//**/*.{js,jsx,json} ",
     "prettier:check": "prettier --config ./.prettierrc --check",
-    "prettier": "prettier --write src//**/*.{js,jsx,json}"
+    "prettier": "prettier --write src//**/*.{js,jsx,json}",
+    "docker-dev-up": "docker-compose -f docker-compose.dev.yml up",
+    "docker-dev-down": "docker-compose -f docker-compose.dev.yml down"
+
   },
   "author": "Chandan",
   "license": "MIT",
