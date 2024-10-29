@@ -5,24 +5,27 @@ version: "3.8"
 services:
 
   # react-app: The name of the service.
-  react-app:
+  dev-app:
 
-    restart: on-failure
+    restart: unless-stopped
 
     container_name: app-dev-c
 
-#  image: Specifies the image name. Docker Compose will build the image from the Dockerfile if it doesn’t already exist.
+    #  image: Specifies the image name. Docker Compose will build the image from the Dockerfile if it doesn’t already exist.
     image: app-dev-i
 
-#  build: Defines the build context and Dockerfile for the service.
+    #  build: Defines the build context and Dockerfile for the service.
     build:
+      # we set the build context to the current folder . of the host machine
       context: .
+
       dockerfile: Dockerfile.dev
 
-#  ports: Maps port 3000 on the host to port 5000 in the container.
+    #  we map the port so that we can access our react app running on port 3000 inside the container from outside i.e host machine.
     ports:
       - "3000:3000"
 
+    # The volume maps everything in the host machine to the app folder inside the container.
     volumes:
       - ./src:/app/src
     # volumes:
@@ -30,9 +33,16 @@ services:
     #   - .:/app
 
     environment:
-    # - CHOKIDAR_USEPOLLING=true
+      # - CHOKIDAR_USEPOLLING=true
       - WATCHPACK_POLLING=true
 
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/app
+    command: [ "npm", "test" ]
 
 # 1. Let's start our React app for development!
 # docker-compose -f docker-compose.dev.yml up
@@ -44,3 +54,7 @@ services:
 
 
 #  NOTE : on a Windows machine:  -e CHOKIDAR_USEPOLLING=true, it was updating the code inside the container but the changes were not displaying on the browser, use -e WATCHPACK_POLLING=true instead.
+
+
+#  NOTE: if you are using same docker-compose.yml file for both dev and production environment, then you need to run development environment with docker-compose up dev-app.
+#  if you run docker-compose up then it will by default run all the containers defined inside docker-compose file.

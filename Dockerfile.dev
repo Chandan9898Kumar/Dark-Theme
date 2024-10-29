@@ -2,11 +2,11 @@
 # Use an official Node.js runtime as a base image
 FROM node:14-alpine AS development
 
+# We set the node environment variable
 ENV NODE_ENV development
 
-# Set the working directory inside the container
+# Set the current working directory inside the docker container to app
 WORKDIR /app
-
 
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
@@ -17,14 +17,18 @@ COPY yarn.lock .
 #RUN yarn install
 RUN npm install
 
-## Copy the local project files to the working directory.
+# Copy everything from the current working directory of the host machine to the working directory inside the container ( which is app in this case ).
+# This step is not necessary for the development Dockerfile though. We will map the host working directory to the containers working directory
+# in the docker-compose.yml file anyway. But I like to keep this line here because in the future we may use this Dockerfile for production 
+# or take this Dockerfile as an inspiration to create the production Dockerfile. 
+# In that case, this line will work as a reminder that we need to copy the source code into the container.
 COPY . .
 
 # Expose the port the app runs on
 EXPOSE 3000
 
 # Start the app
-CMD [ "yarn", "start" ]
+CMD [ "npm", "start" ]
 
 
 

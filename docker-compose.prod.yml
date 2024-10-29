@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  app:
+  prod-app:
     container_name: app-prod-c
     image: app-prod-i
     build:
@@ -20,3 +20,6 @@ services:
 
 # 2. Start our production container on port 80 with the name react-app :
 # docker run -p 8080:80 --name react-app app-prod
+
+
+
