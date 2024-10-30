@@ -21,6 +21,8 @@ services:
 
       dockerfile: Dockerfile.dev
 
+    stdin_open: true
+
     #  we map the port so that we can access our react app running on port 3000 inside the container from outside i.e host machine.
     ports:
       - "3000:3000"
@@ -38,22 +40,28 @@ services:
 
   test:
     container_name: app-test-container
+
     image: app-test-image
+
     build:
       context: .
       dockerfile: Dockerfile.dev
+
     volumes:
       - .:/app
+
+    environment:
+      - CI=true
+
     command: [ "npm", "test" ]
 
-# 1. Let's start our React app for development!
+# Steps :  Let's start our React app for development!
+# 1. If you want to run entire services then Use below Command : 
 # docker-compose -f docker-compose.dev.yml up
 
-# Run your app using:
-
-# docker-compose up
-# docker-compose down
-
+# 2. If you want to Run Single Service at a Time then Run below Command : For example i want to run test service. First i built this service then run this service.
+# a. docker-compose -f docker-compose.dev.yml build test
+# b. docker-compose -f docker-compose.dev.yml run test  
 
 #  NOTE : on a Windows machine:  -e CHOKIDAR_USEPOLLING=true, it was updating the code inside the container but the changes were not displaying on the browser, use -e WATCHPACK_POLLING=true instead.
 
