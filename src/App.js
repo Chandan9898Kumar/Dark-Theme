@@ -40,7 +40,7 @@ export default App;
 
 const Error = () => {
   return (
-    <div>
+    <div style={{ color: 'red' }}>
       <h1>NOT FOUND</h1>
     </div>
   );
