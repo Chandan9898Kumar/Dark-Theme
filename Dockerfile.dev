@@ -12,7 +12,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Cache and Install dependencies
-COPY yarn.lock .
+# COPY yarn.lock .
 
 #RUN yarn install
 RUN npm install

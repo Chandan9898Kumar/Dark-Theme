@@ -9,10 +9,10 @@ services:
 
     restart: unless-stopped
 
-    container_name: app-dev-c
+    container_name: app-dev-container
 
     #  image: Specifies the image name. Docker Compose will build the image from the Dockerfile if it doesn’t already exist.
-    image: app-dev-i
+    image: app-dev-image
 
     #  build: Defines the build context and Dockerfile for the service.
     build:
@@ -37,6 +37,8 @@ services:
       - WATCHPACK_POLLING=true
 
   test:
+    container_name: app-test-container
+    image: app-test-image
     build:
       context: .
       dockerfile: Dockerfile.dev
