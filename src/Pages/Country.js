@@ -4,12 +4,12 @@ import './pages.css';
 
 export const Country = () => {
   return (
-    <div>
+    <>
       <h2>
         This is German Country 
       </h2>
       <p>This Where people wants to go and to get education.</p>
-    </div>
+    </>
   );
 };
 
