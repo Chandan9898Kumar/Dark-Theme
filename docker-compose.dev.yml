@@ -57,11 +57,14 @@ services:
 
 # Steps :  Let's start our React app for development!
 # 1. If you want to run entire services then Use below Command : 
-# docker-compose -f docker-compose.dev.yml up
+# a. docker-compose -f docker-compose.dev.yml up
 
-# 2. If you want to Run Single Service at a Time then Run below Command : For example i want to run test service. First i built this service then run this service.
-# a. docker-compose -f docker-compose.dev.yml build test
-# b. docker-compose -f docker-compose.dev.yml run test  
+# 2. If you want to Run Single Service at a Time then Run below Command : For example i want to run test service.
+# a. docker-compose -f docker-compose.dev.yml up test
+
+# 3. If you want to run only dev-app service only the use below Command :
+# a. docker-compose -f docker-compose.dev.yml up dev-app
+
 
 #  NOTE : on a Windows machine:  -e CHOKIDAR_USEPOLLING=true, it was updating the code inside the container but the changes were not displaying on the browser, use -e WATCHPACK_POLLING=true instead.
 
