@@ -95,18 +95,20 @@ After building the Docker image, the next step is to run the Docker container. T
 1. `Run the Docker Container:`
 
    Use the docker run command to start a new container from your Docker image. You will need to map a port from your host machine to the container to access the React app in your browser.
-   docker run -d -p 3000:5000 --name react-app-container react-app-image
+
+   **docker run -d -p 3000:5000 --name react-app-container react-app-image**
 
    `Explanation of the command:`
-   docker run: The command to run a new Docker container.
-   `-d:` Runs the container in detached mode, meaning it runs in the background.
-   `-p 3000:5000:` Maps port 3000 on your host machine to port 5000 in the container. This allows you to access the app via http://localhost:3000.
-   `--name react-app-container:` Assigns a name to the running container for easier management.
-   `react-app-image:` The name of the Docker image you built in the previous section.
+      A. `docker run:` The command to run a new Docker container.
+      B. `-d:` Runs the container in detached mode, meaning it runs in the background.
+      C. `-p 3000:5000:` Maps port 3000 on your host machine to port 5000 in the container. This allows you to access the app via http://localhost:3000.
+      D. `--name react-app-container:` Assigns a name to the running container for easier management.
+      E. `react-app-image:` The name of the Docker image you built in the previous section.
 
 2. `Verify the Container is Running:`
 
-   List all running Docker containers to verify that your container is up and running: `docker ps`
+   List all running Docker containers to verify that your container is up and running:
+   **docker ps**
    This command will display a list of running containers. Look for react-app-container in the list along with its status and port mappings.
 
 3. `Access the React`
