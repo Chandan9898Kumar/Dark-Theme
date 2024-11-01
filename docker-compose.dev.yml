@@ -55,7 +55,9 @@ services:
 
     command: [ "npm", "test" ]
 
-# Steps :  Let's start our React app for development!
+# Steps :  
+# Let's start our React app for development!
+
 # 1. If you want to run entire services then Use below Command : 
 # a. docker-compose -f docker-compose.dev.yml up
 
@@ -65,6 +67,11 @@ services:
 # 3. If you want to run only dev-app service only the use below Command :
 # a. docker-compose -f docker-compose.dev.yml up dev-app
 
+# 4. If you want to go inside the running container for troubleshooting or manual inspection :
+# a. docker exec -it app-dev-container sh 
+
+# 5. If you want to see the logs of the container
+# a.  docker logs app-dev-container (app-dev-container is conatiners name)
 
 #  NOTE : on a Windows machine:  -e CHOKIDAR_USEPOLLING=true, it was updating the code inside the container but the changes were not displaying on the browser, use -e WATCHPACK_POLLING=true instead.
 

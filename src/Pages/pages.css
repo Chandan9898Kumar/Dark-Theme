@@ -132,7 +132,6 @@ dd {
   padding: 15px 20px;
 }
 
-
 .s-layout {
   display: flex;
   width: 100%;
@@ -154,17 +153,15 @@ dd {
   display: flex;
   justify-content: flex-start;
   align-items: baseline;
- 
+
   height: 100%;
   position: relative;
   gap: 20px;
 }
 .outlet-component {
-  display: flex;
-  justify-content: flex-start;
-  align-items: baseline;
+  display: block;
   word-break: break-all;
   word-wrap: normal;
-
+  background: cadetblue;
   flex: 1;
 }

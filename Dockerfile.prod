@@ -1,3 +1,5 @@
+# Stage 1: Build the React app
+
 FROM node:14-alpine AS builder
 
 # Add a work directory
@@ -19,6 +21,9 @@ RUN npm install
 # Build the app
 RUN npm run build
 
+
+# Stage 2: Create the production image
+
 # Bundle static assets with nginx
 FROM nginx:1.21.0-alpine as production
 
@@ -38,3 +43,21 @@ CMD ["nginx", "-g", "daemon off;"]
 
 # This dockerfile will install all node dependencies, then build your react app (create build directory), Then our nginx setup will serve our app from this build directory.
 # we might not need docker-compose.prod.yml for production build, as your hosting provider will handle that, but Dockerfile and nginx.conf will require.
+
+
+#  This Dockerfile defines a multi-stage build with two stages : 
+#  1. The first stage sets up a Node.js environment, installs dependencies, and builds the React app.
+#  2. The second stage uses the NGINX image as a base and copies the built app from the previous stage to the appropriate directory.
+
+
+
+# Understanding Multi-Stage Build Syntax:
+# AS — This keyword is crucial for naming different stages of our build. For instance, FROM node AS base names the initial stage as base,
+# which can then be used as a starting point for subsequent stages by referring to it as FROM base.
+
+# --from=stage — This option in the COPY command is super handy for transferring files between stages.
+#   For example, COPY --from=build /usr/src/app ./ copies files from a stage named build to the current stage.
+
+# --target — When building your Docker image, this option allows you to specify which stage to build up to. 
+#  For instance, docker build --target prod -t app . will build only up to the prod stage, making it possible to tailor the build process for specific needs,
+#  like development or production.
