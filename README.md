@@ -99,11 +99,11 @@ After building the Docker image, the next step is to run the Docker container. T
    **docker run -d -p 3000:5000 --name react-app-container react-app-image**
 
    `Explanation of the command:`
-      A. `docker run:` The command to run a new Docker container.
-      B. `-d:` Runs the container in detached mode, meaning it runs in the background.
-      C. `-p 3000:5000:` Maps port 3000 on your host machine to port 5000 in the container. This allows you to access the app via http://localhost:3000.
-      D. `--name react-app-container:` Assigns a name to the running container for easier management.
-      E. `react-app-image:` The name of the Docker image you built in the previous section.
+   A. `docker run:` The command to run a new Docker container.
+   B. `-d:` Runs the container in detached mode, meaning it runs in the background.
+   C. `-p 3000:5000:` Maps port 3000 on your host machine to port 5000 in the container. This allows you to access the app via http://localhost:3000.
+   D. `--name react-app-container:` Assigns a name to the running container for easier management.
+   E. `react-app-image:` The name of the Docker image you built in the previous section.
 
 2. `Verify the Container is Running:`
 
