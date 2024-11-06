@@ -1,5 +1,6 @@
 
-# Use an official Node.js runtime as a base image
+# Use an official Node.js runtime as a base image.
+# This tells Docker to use an existing Node.js image as the base for our custom image. This base image has Node.js pre-installed.
 FROM node:14-alpine AS development
 
 # We set the node environment variable
@@ -8,7 +9,7 @@ ENV NODE_ENV development
 # Set the current working directory inside the docker container to app
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
+# Copy package.json and package-lock.json to the working directory. This file contains the dependencies for our Node.js app.
 COPY package*.json ./
 
 # Cache and Install dependencies
@@ -24,10 +25,10 @@ RUN npm install
 # In that case, this line will work as a reminder that we need to copy the source code into the container.
 COPY . .
 
-# Expose the port the app runs on
+# Expose the port the app runs on. This Informs Docker that the container will use port 3000
 EXPOSE 3000
 
-# Start the app
+# This Specifies the command to Start the app
 CMD [ "npm", "start" ]
 
 
