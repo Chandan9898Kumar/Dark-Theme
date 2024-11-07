@@ -1,6 +1,6 @@
 ### Docker Set-Up For React App
 
-A Dockerfile is a script that contains a series of instructions on how to build a Docker image for your application. For a React app, the Dockerfile will specify the base image, copy the app files, install dependencies, build the app, and define how the app should run within the container.
+- A Dockerfile is a script that contains a series of instructions on how to build a Docker image for your application. For a React app, the Dockerfile will specify the base image, copy the app files, install dependencies, build the app, and define how the app should run within the container.
 
 **Follow these steps to create an effective Dockerfile for your React app:**
 
