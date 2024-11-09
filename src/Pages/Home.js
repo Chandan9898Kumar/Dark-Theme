@@ -1,4 +1,4 @@
-import React, { useState, useEffect, memo, useCallback } from 'react';
+import React, { useState, useEffect, memo, useCallback, useRef } from 'react';
 import './pages.css';
 
 import Scroller from '../Scrollers/ElementScroller';
@@ -84,7 +84,7 @@ const HomePage = () => {
         setIsDisabled(false);
       }
     },
-    [data, page]
+    [data, page, inputValue]
   );
   //  Till here ==================================================================================
 
@@ -133,8 +133,14 @@ const HomePage = () => {
 export default memo(HomePage);
 
 const List = ({ data, page, inputValue, fetchResult, isDisabled }) => {
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
   return (
-    <>
+    <div>
       {data?.map((item, index) => {
         return (
           <div key={item.objectID} style={{ padding: '10px' }}>
@@ -145,16 +151,21 @@ const List = ({ data, page, inputValue, fetchResult, isDisabled }) => {
 
       <div style={{ textAlign: 'center', padding: '8px 8px', margin: '10px auto' }}>
         {!!page && !!data.length && (
-          <button
-            style={{ cursor: 'pointer', fontSize: '18px', padding: '5px 5px' }}
-            disabled={isDisabled}
-            onClick={() => fetchResult(inputValue, page)}
-          >
-            MORE {page}
-          </button>
+          <div>
+            <button
+              style={{ cursor: 'pointer', fontSize: '18px', padding: '5px 5px' }}
+              disabled={isDisabled}
+              onClick={() => fetchResult(inputValue, page)}
+            >
+              MORE {page}
+            </button>
+            <button style={{ cursor: 'pointer', fontSize: '18px', padding: '5px 5px' }} onClick={handleScrollToTop}>
+              scroller To Top
+            </button>
+          </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
