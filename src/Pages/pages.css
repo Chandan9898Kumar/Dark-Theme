@@ -1,7 +1,52 @@
+/* Home Page */
+
 .Page-Container {
-  padding: 15px 15px;
+  padding: 10px 10px;
 }
 
+.Sub-Container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.events {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.input-field {
+  font-size: 18px;
+  padding: 5px 5px;
+  font-size: 18px;
+  padding: 5px 5px;
+  border: none;
+  box-shadow: 2px 4px 4px #696069;
+  font-weight: 600;
+}
+
+.input-field:focus {
+  outline: none;
+}
+
+.Search-Button {
+  font-size: 18px;
+  height: 35px;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 5px;
+  cursor: pointer;
+  transition: all 1s;
+  &:hover{
+    background-color: cornflowerblue;
+    color: aliceblue;
+  }
+}
+
+/* Service  Page */
 .Service-Items {
   display: flex;
   justify-content: space-around;
