@@ -40,14 +40,13 @@
   padding: 5px 5px;
   cursor: pointer;
   transition: all 1s;
-  &:hover{
+  &:hover {
     background-color: cornflowerblue;
     color: aliceblue;
   }
 }
 
-
-.scroll-To-Top{
+.scroll-To-Top {
   width: 100%;
   font-size: 20px;
   font-weight: 500;
@@ -55,6 +54,54 @@
   text-transform: uppercase;
   cursor: pointer;
   height: 45px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 500px;
+  overflow: auto;
+  border: 2px solid plum;
+  padding: 10px 10px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.movie {
+  max-width: 300px;
+  background-color: lightblue;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+img {
+  height: 100px;
+}
+
+.wrapper-two {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  height: 500px;
+  overflow: auto;
+  border: 2px solid plum;
+  padding: 10px 10px;
+  margin: 10px auto;
 }
 
 /* Service  Page */

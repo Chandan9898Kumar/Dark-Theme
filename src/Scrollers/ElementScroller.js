@@ -1,6 +1,6 @@
 import React, { useRef, memo } from 'react';
 import '../Pages/pages.css';
-const Scroller = ({ data, item, setItem, isLoading, fetchData }) => {
+const ScrollerOnElement = ({ data, item, setItem, isLoading, fetchData }) => {
   const elem = useRef('');
 
   const handleScroll = () => {
@@ -44,4 +44,4 @@ const Scroller = ({ data, item, setItem, isLoading, fetchData }) => {
   );
 };
 
-export default memo(Scroller);
+export default memo(ScrollerOnElement);

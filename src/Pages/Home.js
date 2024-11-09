@@ -1,7 +1,8 @@
 import React, { useState, useEffect, memo, useCallback, useRef } from 'react';
 import './pages.css';
 
-import Scroller from '../Scrollers/ElementScroller';
+import ScrollerOnElement from '../Scrollers/ElementScroller';
+import AppWithIntersection from '../Scrollers/ScrollerWithIntersection';
 const HomePage = () => {
   //  This is For Scroller With Button
   const [data, setData] = useState([]);
@@ -95,7 +96,13 @@ const HomePage = () => {
       <div className="Sub-Container">
         <div className="Child-One">
           <h1>Scroller On Element</h1>
-          <Scroller data={infiniteData} item={item} setItem={setItem} isLoading={isLoading} fetchData={fetchData} />
+          <ScrollerOnElement
+            data={infiniteData}
+            item={item}
+            setItem={setItem}
+            isLoading={isLoading}
+            fetchData={fetchData}
+          />
         </div>
 
         <div className="Child-Two">
@@ -124,6 +131,7 @@ const HomePage = () => {
 
         <div className="Child-Three">
           <h1>Scroller Using Intersection</h1>
+          <AppWithIntersection />
         </div>
       </div>
     </div>
@@ -133,14 +141,15 @@ const HomePage = () => {
 export default memo(HomePage);
 
 const List = ({ data, page, inputValue, fetchResult, isDisabled }) => {
+  const main = useRef('');
   const handleScrollToTop = () => {
-    window.scrollTo({
+    main.current.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
   };
   return (
-    <div>
+    <div ref={main} className="wrapper-two">
       {data?.map((item, index) => {
         return (
           <div key={item.objectID} style={{ padding: '10px' }}>
