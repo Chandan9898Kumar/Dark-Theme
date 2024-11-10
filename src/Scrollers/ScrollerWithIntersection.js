@@ -94,7 +94,7 @@ const App = () => {
     <>
       <h1>This is infinite Scroller</h1>
       <div style={{ height: '550px', overflow: 'auto' }}>
-        <MyApp
+        <InfiniteScrollerPage
           movies={movies}
           setMovies={setMovies}
           page={page}
@@ -108,12 +108,11 @@ const App = () => {
 
 export default App;
 
-function MyApp({
+function InfiniteScrollerPage({
   movies,
   setMovies,
   page,
   setPage,
-
   currentPage,
 }) {
   const [response, setResponse] = useState(true);
