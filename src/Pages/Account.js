@@ -35,7 +35,7 @@ const AccountPage = () => {
           data.map((item) => {
             return (
               <div key={item.id} className="Item-Boxes">
-                <Link to={`/account/${item.id}`}>
+                <Link rel="prefetch" to={`/account/${item.id}`}>
                   <img
                     className="Img-Responsive"
                     src={item.images[0]}
