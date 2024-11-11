@@ -65,7 +65,7 @@ export default function App() {
       </>
     );
   }, [data]);
-
+  console.log(page, 'page');
   return (
     <div>
       <InfiniteScroller setPage={setPage} currentPage={currentPage} isLoading={isLoading} displayData={displayData} />
@@ -89,11 +89,18 @@ const InfiniteScroller = ({ setPage = () => {}, currentPage = 0, isLoading = fal
       rootMargin: '0px',
       threshold: 1.0,
     };
+
+    // Start observing the target element
     const observer = new IntersectionObserver(handleObserver, options);
 
     if (elementToBeObserved.current) {
       observer.observe(elementToBeObserved.current);
     }
+
+    // Cleanup the observer when the component unmounts
+    return () => {
+      observer.disconnect();
+    };
   }, [isLoading]);
 
   return (

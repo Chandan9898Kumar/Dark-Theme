@@ -26,34 +26,43 @@ const AccountPage = () => {
 
   return (
     <div className="Page-Container">
-      <h1>This is Account Page Shows Images</h1>
-      <div className="Item-Main">
-        {isLoading ? (
-          <div>Please Wait while your data is being loaded...</div>
-        ) : (
-          !!data?.length &&
-          data.map((item) => {
-            return (
-              <div key={item.id} className="Item-Boxes">
-                <Link rel="prefetch" to={`/account/${item.id}`}>
-                  <img
-                    className="Img-Responsive"
-                    src={item.images[0]}
-                    alt={`${item.title}`}
-                    loading="lazy"
-                    width={250}
-                    height={350}
-                  />
-                  <label>{item.title}</label>
-                </Link>
-              </div>
-            );
-          })
-        )}
-      </div>
+      <ShowHeader />
+      <div className="Item-Main">{isLoading ? <ShowLoading /> : !!data?.length && <ShowData data={data} />}</div>
       {isError && <div>{isError}</div>}
     </div>
   );
 };
 
 export default memo(AccountPage);
+
+const ShowHeader = () => {
+  return <h1>This is Account Page Shows Images</h1>;
+};
+
+const ShowLoading = () => {
+  return <div>Please Wait while your data is being loaded...</div>;
+};
+
+const ShowData = ({ data }) => {
+  return (
+    <>
+      {data.map((item) => {
+        return (
+          <div key={item.id} className="Item-Boxes">
+            <Link rel="prefetch" to={`/account/${item.id}`}>
+              <img
+                className="Img-Responsive"
+                src={item.images[0]}
+                alt={`${item.title}`}
+                loading="lazy"
+                width={250}
+                height={350}
+              />
+              <label>{item.title}</label>
+            </Link>
+          </div>
+        );
+      })}
+    </>
+  );
+};
