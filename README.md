@@ -257,3 +257,28 @@ F. `Monitoring and Performance Tuning:`
 A. Monitor the performance and resource usage of your Docker container using Docker commands like docker stats.
 **docker stats react-app-container**
 B. Optimize your Dockerfile to reduce image size and improve container performance. Techniques include using multi-stage builds, minimizing the number of layers, and removing unnecessary files and dependencies.
+
+### React Lazy Loading Issue and Solution.
+
+Assume any user had the app loaded sometime in the early morning and came back to use it in the afternoon, but if in the middle of that the app gets deployed - publishing the new builds, so what happens is → the first time the app was loaded, any other page links with React.lazy had a reference to some bundle → let’s say about.123.js so whenever the user would click on the about link, the app will try to fetch this file and use it, but in this very special case if the file on the server actually got updated, to let’s say about.456.js hence the actual network call with fail with a 404, isn’t it? and the app will crash 🐛. To address this issue, we have written a very minimal wrapper around React.lazy that simply ensures if the bundle fails to load, it reloads the whole app, so that all the references to the bundles are fresh and are available on the server.
+
+- Solution :
+
+```js
+import { lazy } from 'react';
+
+export const lazyWithRetry = (componentImport) =>
+  lazy(async () => {
+    try {
+      return await componentImport();
+    } catch (error) {
+      console.error(error);
+      return window.location.reload();
+    }
+  });
+
+// Usage
+const HomePage = lazyWithRetry(() => import('./HomePage'));
+```
+
+`What it does is basically tries to load the asset within a try...catch block, and if throws any error, it just simply reloads the whole app. I know CDNs can solve this problem with a better way, but just in case your app doesn’t use a CDN or the CDN is down itself. If there is a better solution or enhancement to this, please comment below and let me know, happy to discuss.`

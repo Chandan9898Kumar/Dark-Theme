@@ -3,16 +3,27 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import NavLinks from './NavBar/NavLink';
 import ToDoMenuDrawer, { Country, CountryPlace, CountryAddress, CountryId } from './Pages/Country';
-const HomePage = lazy(() => import('./Pages/Home'));
-const AccountPage = lazy(() => import('./Pages/Account'));
-const ServicePage = lazy(() => import('./Pages/Services'));
-const AccountInformationPage = lazy(() => import('./Pages/AccountInformation'));
+
+const lazyWithRetry = (componentImport) =>
+  lazy(async () => {
+    try {
+      return await componentImport();
+    } catch (error) {
+      console.error(error);
+      return window.location.reload();
+    }
+  });
+
+const HomePage = lazyWithRetry(() => import('./Pages/Home'));
+const AccountPage = lazyWithRetry(() => import('./Pages/Account'));
+const ServicePage = lazyWithRetry(() => import('./Pages/Services'));
+const AccountInformationPage = lazyWithRetry(() => import('./Pages/AccountInformation'));
 
 function App() {
   return (
-    <Suspense fallback="Loading ...">
-      <BrowserRouter future={{ v7_startTransition: true }}>
-        <NavLinks />
+    <BrowserRouter future={{ v7_startTransition: true }}>
+      <NavLinks />
+      <Suspense fallback="Loading ...">
         <Routes>
           <Route path="/" element={<HomePage />} />
 
@@ -31,8 +42,8 @@ function App() {
 
           <Route path="*" element={<Error />} />
         </Routes>
-      </BrowserRouter>
-    </Suspense>
+      </Suspense>
+    </BrowserRouter>
   );
 }
 
