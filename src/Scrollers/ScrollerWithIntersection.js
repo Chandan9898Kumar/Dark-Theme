@@ -1,83 +1,107 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import '../Pages/pages.css';
 
-export default function AppWithIntersection() {
-  const [movies, setMovies] = useState({ Search: [] });
+export default function App() {
+  const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
-  const [response, setResponse] = useState(true);
-  const loader = useRef(null);
-  const temp = useRef(response);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState('');
+  const [offSet, setOffset] = useState(10);
   const currentPage = useRef(page);
-  useEffect(() => {
-    var options = {
-      root: null, //viewport
-      rootMargin: '20px',
-      threshold: 1.0,
-    };
-    const observer = new IntersectionObserver(handleObserver, options);
-    if (loader.current) {
-      observer.observe(loader.current);
-    }
-  }, []);
 
-  useEffect(() => {
+  const URL = `https://www.omdbapi.com/?apikey=93789fba&s=batman&page=${page}`;
+
+  const fetchItem = async () => {
     currentPage.current = page;
-    fetch(`https://www.omdbapi.com/?apikey=93789fba&s=batman&page=${page}`)
-      .then((res) => res.json())
-      .then((res) => {
-        let respo = res?.Response ?? 'False';
+    setIsError('');
+    try {
+      const response = await fetch(URL);
+      if (response.status !== 200) {
+        throw Error('Something Went Wrong...');
+      }
+      const result = await response.json();
+      setData([...data, ...result.Search]);
+    } catch (error) {
+      setIsError(error);
+    } finally {
+      setIsLoading(true);
+    }
+  };
 
-        if (respo === 'True') {
-          setMovies((data) => ({
-            ...data,
-            ...res.data,
-            Search: [...data.Search, ...res.Search],
-          }));
-          setResponse(true);
-          temp.current = true;
-        } else if (respo === 'False') {
-          setResponse(false);
-          temp.current = false;
-        }
-      });
+  useEffect(() => {
+    fetchItem();
   }, [page]);
 
-  const handleObserver = useCallback(
-    (entities) => {
-      const target = entities[0];
-      if (target.isIntersecting) {
-        if (temp.current) {
-          setPage(currentPage.current + 1);
-        }
-      }
-    },
-    [page]
-  );
-
   return (
-    <div className="wrapper">
-      <ul>
-        {movies?.Search?.map((movie, index) => {
-          return <Movie id={index} key={index} movie={movie} />;
-        })}
-      </ul>
-      <div className="loading" ref={loader}>
-        {response && <h2>Loading...</h2>}
-      </div>
+    <div>
+      <InfiniteScroller data={data} setPage={setPage} currentPage={currentPage} isLoading={isLoading} />
     </div>
   );
 }
 
-function Movie(props) {
-  const { movie, id } = props;
+const InfiniteScroller = ({ data, setPage, currentPage, isLoading }) => {
+  const elementToBeObserved = useRef('');
+
+  const handleObserver = useCallback((entities) => {
+    let target = entities[0];
+    if (target.isIntersecting) {
+      setPage(currentPage.current + 1);
+    }
+  }, []);
+
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 1.0,
+    };
+    const observer = new IntersectionObserver(handleObserver, options);
+
+    if (elementToBeObserved.current) {
+      observer.observe(elementToBeObserved.current);
+    }
+  }, [isLoading]);
 
   return (
-    <li className="movie" key={id}>
-      <img src={movie.Poster} />
-      <p className="title">{movie.Title}</p>
-    </li>
+    <div style={{ height: '500px', overflow: 'auto' }}>
+      <h1 style={{ textAlign: 'center' }}>Data to be displayed Here</h1>
+
+      {data.map((item, index) => {
+        return (
+          <div
+            key={index}
+            style={{
+              width: '450px',
+              border: '1px solid black',
+              padding: '10px 10px',
+              margin: '10px auto',
+            }}
+          >
+            <img src={item.Poster} loading="lazy" alt={item.Title} width="430px" height="350px" />
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                fontSize: '20px',
+              }}
+            >
+              <span>Title : {item.Title}</span>
+
+              <span>Type : {item.Type}</span>
+            </div>
+          </div>
+        );
+      })}
+
+      {isLoading && (
+        <div ref={elementToBeObserved}>
+          <h1 style={{ textAlign: 'center' }}> Loading ...</h1>
+        </div>
+      )}
+    </div>
   );
-}
+};
 
 /**
       ###                                To use this feature as a reusable component
