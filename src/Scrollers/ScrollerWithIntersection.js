@@ -32,14 +32,48 @@ export default function App() {
     fetchItem();
   }, [page]);
 
+  const displayData = useCallback(() => {
+    return (
+      <>
+        {data?.map((item, index) => {
+          return (
+            <div
+              key={index}
+              style={{
+                width: '450px',
+                border: '1px solid black',
+                padding: '10px 10px',
+                margin: '10px auto',
+              }}
+            >
+              <img src={item.Poster} loading="lazy" alt={item.Title} width="430px" height="350px" />
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  fontSize: '20px',
+                }}
+              >
+                <span>Title : {item.Title}</span>
+
+                <span>Type : {item.Type}</span>
+              </div>
+            </div>
+          );
+        })}
+      </>
+    );
+  }, [data]);
+
   return (
     <div>
-      <InfiniteScroller data={data} setPage={setPage} currentPage={currentPage} isLoading={isLoading} />
+      <InfiniteScroller setPage={setPage} currentPage={currentPage} isLoading={isLoading} displayData={displayData} />
     </div>
   );
 }
 
-const InfiniteScroller = ({ data, setPage, currentPage, isLoading }) => {
+const InfiniteScroller = ({ setPage = () => {}, currentPage = 0, isLoading = false, displayData = () => {} }) => {
   const elementToBeObserved = useRef('');
 
   const handleObserver = useCallback((entities) => {
@@ -65,35 +99,7 @@ const InfiniteScroller = ({ data, setPage, currentPage, isLoading }) => {
   return (
     <div style={{ height: '500px', overflow: 'auto' }}>
       <h1 style={{ textAlign: 'center' }}>Data to be displayed Here</h1>
-
-      {data.map((item, index) => {
-        return (
-          <div
-            key={index}
-            style={{
-              width: '450px',
-              border: '1px solid black',
-              padding: '10px 10px',
-              margin: '10px auto',
-            }}
-          >
-            <img src={item.Poster} loading="lazy" alt={item.Title} width="430px" height="350px" />
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                fontSize: '20px',
-              }}
-            >
-              <span>Title : {item.Title}</span>
-
-              <span>Type : {item.Type}</span>
-            </div>
-          </div>
-        );
-      })}
-
+      {displayData()}
       {isLoading && (
         <div ref={elementToBeObserved}>
           <h1 style={{ textAlign: 'center' }}> Loading ...</h1>
