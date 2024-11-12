@@ -45,24 +45,21 @@ const ShowLoading = () => {
 
 const ShowData = ({ data }) => {
   return (
-    <>
+    <div className="card-group">
       {data.map((item) => {
         return (
-          <div key={item.id} className="Item-Boxes">
-            <Link rel="prefetch" to={`/account/${item.id}`}>
-              <img
-                className="Img-Responsive"
-                src={item.images[0]}
-                alt={`${item.title}`}
-                loading="lazy"
-                width={250}
-                height={350}
-              />
-              <label>{item.title}</label>
-            </Link>
-          </div>
+          <Link key={item.id} rel="prefetch" to={`/account/${item.id}`} className="card transition">
+            <img
+              src={item.images[0]}
+              alt={`${item.title}`}
+              loading="lazy"
+              width={250}
+              height={350}
+            />
+            <label>{item.title}</label>
+          </Link>
         );
       })}
-    </>
+    </div>
   );
 };

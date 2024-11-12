@@ -25,37 +25,31 @@ const ShowData = ({ images, title, ...rest }) => {
   const navigate = useNavigate();
   return (
     <div className="Grid-Parent">
-      <div className="Grid-Images">
-        <img
-          className="Img-Responsive"
-          src={images[0] ?? ''}
-          alt={`${title}`}
-          loading="eager"
-          width={350}
-          height={450}
-        />
-        <label>{title}</label>
-      </div>
-      <div className="Grid-Details">
-        <div className="parent">
-          <dl>
-            <dt>Brand:</dt>
-            <dd>{rest.brand ?? 'N/A'}</dd>
-            <dt>Category:</dt>
-            <dd>{rest.category}</dd>
-            <dt>Price:</dt>
-            <dd>{rest.price}</dd>
-            <dt>Description:</dt>
-            <dd>{rest.description}</dd>
-            <dt>Shipping Information:</dt>
-            <dd>{rest.shippingInformation}</dd>
-            <dt>Warranty Information:</dt>
-            <dd>{rest.warrantyInformation}</dd>
-          </dl>
-          <button className="Go-Back" onClick={() => navigate(-1)}>
-            Go Back
-          </button>
+      <div className="card-group">
+        <div className="card transition">
+          <img src={images[0] ?? ''} alt={`${title}`} loading="eager" width={350} height={450} />
+          <label>{title}</label>
         </div>
+      </div>
+
+      <div className="parent">
+        <dl>
+          <dt>Brand:</dt>
+          <dd>{rest.brand ?? 'N/A'}</dd>
+          <dt>Category:</dt>
+          <dd>{rest.category}</dd>
+          <dt>Price:</dt>
+          <dd>{rest.price}</dd>
+          <dt>Description:</dt>
+          <dd>{rest.description}</dd>
+          <dt>Shipping Information:</dt>
+          <dd>{rest.shippingInformation}</dd>
+          <dt>Warranty Information:</dt>
+          <dd>{rest.warrantyInformation}</dd>
+        </dl>
+        <button className="Go-Back" onClick={() => navigate(-1)}>
+          Go Back
+        </button>
       </div>
     </div>
   );
