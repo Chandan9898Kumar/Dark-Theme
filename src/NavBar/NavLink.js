@@ -33,6 +33,13 @@ const NavLinks = () => {
         >
           Country
         </NavLink>
+
+        <NavLink
+          to="/tab"
+          className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : 'In-Active')}
+        >
+          Tab
+        </NavLink>
       </div>
       <div className="Input-Checkbox">
         <input type="checkbox" checked={isThemeDark} onChange={toggleTheme} />

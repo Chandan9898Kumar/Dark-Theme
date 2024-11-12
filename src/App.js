@@ -18,7 +18,7 @@ const HomePage = lazyWithRetry(() => import('./Pages/Home'));
 const AccountPage = lazyWithRetry(() => import('./Pages/Account'));
 const ServicePage = lazyWithRetry(() => import('./Pages/Services'));
 const AccountInformationPage = lazyWithRetry(() => import('./Pages/AccountInformation'));
-
+const TabHome = lazy(() => import('./Pages/Tab/TabHome'));
 function App() {
   return (
     <BrowserRouter future={{ v7_startTransition: true }}>
@@ -39,6 +39,8 @@ function App() {
             <Route path="address" element={<CountryAddress />} />
             <Route path=":id" element={<CountryId />} />
           </Route>
+
+          <Route path="/tab" element={<TabHome />} />
 
           <Route path="*" element={<Error />} />
         </Routes>
