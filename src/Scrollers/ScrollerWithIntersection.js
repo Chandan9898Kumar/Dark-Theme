@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import '../Pages/pages.css';
+
 
 export default function App() {
   const [data, setData] = useState([]);
@@ -65,7 +65,7 @@ export default function App() {
       </>
     );
   }, [data]);
-  console.log(page, 'page');
+ 
   return (
     <div>
       <InfiniteScroller setPage={setPage} currentPage={currentPage} isLoading={isLoading} displayData={displayData} />

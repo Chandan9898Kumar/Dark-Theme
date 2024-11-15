@@ -3,6 +3,7 @@ import './pages.css';
 
 import ScrollerOnElement from '../Scrollers/ElementScroller';
 import AppWithIntersection from '../Scrollers/ScrollerWithIntersection';
+import InfiniteScroller from '../Scrollers/ScrollWithLimitInApi';
 const HomePage = () => {
   //  This is For Scroller With Button
   const [data, setData] = useState([]);
@@ -89,6 +90,22 @@ const HomePage = () => {
   );
   //  Till here ==================================================================================
 
+  //  This is for Scroller with api Limit
+
+  const displayItems = (posts) => {
+    return (
+      <>
+        {posts.map((item, index) => (
+          <article key={index}>
+            #{item.id}: {item.title}
+          </article>
+        ))}
+      </>
+    );
+  };
+
+  //  Till Here
+
   return (
     <div className="Page-Container">
       <h2 style={{ textAlign: 'center', textShadow: '3px 0px 3px plum' }}>This is Home Page</h2>
@@ -132,6 +149,15 @@ const HomePage = () => {
         <div className="Child-Three">
           <h1>Scroller Using Intersection</h1>
           <AppWithIntersection />
+        </div>
+      </div>
+
+      <div className="scroll-head">
+        <h1>Scroller with Limit</h1>
+        <div className="scroll-body">
+          <InfiniteScroller url="https://dummyjson.com/posts" limit={50} render={displayItems}>
+            <div className="loader">Loading...</div>
+          </InfiniteScroller>
         </div>
       </div>
     </div>

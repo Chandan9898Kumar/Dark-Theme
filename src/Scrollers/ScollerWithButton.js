@@ -2,8 +2,6 @@
 import React, { useState, memo, useCallback } from 'react';
 
 
-
-
 //  Using Class component
 const applyUpdateResult = (result) => (prevState) => ({
   hits: [...prevState.hits, ...result.hits],

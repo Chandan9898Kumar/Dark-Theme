@@ -100,6 +100,40 @@ ul {
   margin: 10px auto;
 }
 
+/* Scroller with api limit*/
+
+.scroll-head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.scroll-body {
+  background: #20232a;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  box-shadow: 0 4px 10px 0 rgba(33, 33, 33, 0.15);
+  width: 500px;
+  height: 500px;
+  overflow: auto;
+  color: burlywood;
+}
+
+article {
+  border-radius: 3px;
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.loader {
+  text-align: center;
+  color: #fff;
+  margin-top: 20px;
+  font-size: 25px;
+  font-weight: 500;
+  padding: 10px 10px
+}
+
 /* Service  Page */
 .Service-Items {
   display: flex;
