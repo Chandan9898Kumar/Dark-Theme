@@ -50,7 +50,7 @@ const NavLinks = () => {
 
 export default NavLinks;
 
-/**  We can use this  styling as well
+/** We can use this  styling as well
 const navigationActive = ({ isActive ,isPending}) => {
     return {
       color: isPending ? 'pending' : isActive ? 'active' : 'In-Active,
