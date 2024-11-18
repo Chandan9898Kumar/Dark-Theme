@@ -1,9 +1,10 @@
-import React, { act } from 'react';
+import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import App from './App';
 import ThemeManager from './ContextApi/ThemeManager';
 
 describe('Test Suite for App Page', () => {
+
   test('Testing NavLink Texts', async () => {
     const items = ['Home Page', 'Account Page', 'Account Page', 'Service Page', 'Country', 'Tab'];
 
@@ -24,7 +25,11 @@ describe('Test Suite for App Page', () => {
       const loadingElement = screen.getByText('Loading ...');
       expect(loadingElement).toBeInTheDocument();
     });
+
+
+    screen.debug()
   });
+
 });
 
 /**
