@@ -1,6 +1,5 @@
 import React, { useState, useEffect, memo, useCallback, useRef } from 'react';
 import './pages.css';
-
 import ScrollerOnElement from '../Scrollers/ElementScroller';
 import AppWithIntersection from '../Scrollers/ScrollerWithIntersection';
 import InfiniteScroller from '../Scrollers/ScrollWithLimitInApi';
