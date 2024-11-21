@@ -2,7 +2,7 @@ import React from 'react';
 const IESupport = () => {
   return (
     <div style={{ textAlign: 'center', fontSize: '20px' }}>
-      <title>Browser Not Supported</title>
+      <title stle={{ color: 'red' }}>Browser Not Supported</title>
 
       <div>
         <h2>Browser Not Supported</h2>
