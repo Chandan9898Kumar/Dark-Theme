@@ -3,7 +3,6 @@ const IESupport = () => {
   return (
     <div style={{ textAlign: 'center', fontSize: '20px' }}>
       <title style={{ color: 'red' }}>Browser Not Supported</title>
-
       <div>
         <h2>Browser Not Supported</h2>
         We have detected that you are using Internet Explorer.
