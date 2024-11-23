@@ -26,8 +26,6 @@ describe('Test Suite for App Page', () => {
       expect(loadingElement).toBeInTheDocument();
     });
 
-
-    screen.debug()
   });
 
 });
