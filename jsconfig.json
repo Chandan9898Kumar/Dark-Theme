@@ -1,10 +1,20 @@
 {
-    "compilerOptions": {
-      "baseUrl": "./",
-      "paths": {
-        "@/*": ["./src/*"]
-      },
-      "allowJs": true
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"]
     },
-    "exclude": ["node_modules", "build"]
-  }
+    "allowJs": true
+  },
+  "exclude": ["node_modules", "build"]
+}
+
+//  OR
+// {
+//   "compilerOptions": {
+//     "baseUrl": "src",
+//     "paths": {
+//       "@": ["./src"]
+//     }
+//   }
+// }
