@@ -1,9 +1,9 @@
-import React, { useState, useTransition } from 'react';
-import TabButtons from './TabButtons';
-import Issues from './IssueComponent';
-import Projects from './ProjectComponent';
-import Reports from './ReportComponent';
+import React, { useState, useTransition, lazy, Suspense } from 'react';
 import './tabStyle.css';
+const TabButtons = lazy(() => import('./TabButtons'));
+const Issues = lazy(() => import('./IssueComponent'));
+const Projects = lazy(() => import('./ProjectComponent'));
+const Reports = lazy(() => import('./ReportComponent'));
 const TabHome = () => {
   const [tab, setTab] = useState('issues');
 
@@ -47,7 +47,7 @@ const TabHome = () => {
         />
       </div>
 
-      <div className="Tab-Content">{Components[tab]}</div>
+      <div className="Tab-Content">{<Suspense fallback="Loading...">{Components[tab]}</Suspense>}</div>
     </div>
   );
 };

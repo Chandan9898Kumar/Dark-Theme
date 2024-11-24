@@ -8,13 +8,3 @@
   },
   "exclude": ["node_modules", "build"]
 }
-
-//  OR
-// {
-//   "compilerOptions": {
-//     "baseUrl": "src",
-//     "paths": {
-//       "@": ["./src"]
-//     }
-//   }
-// }

@@ -58,3 +58,15 @@ const Error = () => {
     </div>
   );
 };
+
+
+/**
+// {
+//   "compilerOptions": {
+//     "baseUrl": "src",
+//     "paths": {
+//       "@": ["./src"]
+//     }
+//   }
+// }
+ */
