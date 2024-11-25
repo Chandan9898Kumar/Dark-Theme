@@ -101,8 +101,14 @@ const AddEditModal = ({
   );
 };
 
-export default memo(AddEditModal);
+AddEditModal.propTypes = {
+  title: PropTypes.string,
+  onCloseModal: PropTypes.func,
+  userDetails: PropTypes.object,
+  data: PropTypes.array,
+  setData: PropTypes.func,
+  isEdit: PropTypes.bool,
+  isAdd: PropTypes.bool,
+};
 
-// propTypes.AddEditModal = {
-//   onCloseModal: PropTypes.func,
-// };
+export default memo(AddEditModal);
