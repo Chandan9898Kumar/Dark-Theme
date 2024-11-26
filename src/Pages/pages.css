@@ -1,3 +1,7 @@
+body {
+  box-sizing: border-box;
+}
+
 /* Home Page */
 
 .Page-Container {
@@ -131,7 +135,7 @@ article {
   margin-top: 20px;
   font-size: 25px;
   font-weight: 500;
-  padding: 10px 10px
+  padding: 10px 10px;
 }
 
 /* Service  Page */
