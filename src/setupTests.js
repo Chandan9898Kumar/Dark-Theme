@@ -16,6 +16,9 @@ import '@testing-library/jest-dom';
 
 To resolve this issue, you can mock the IntersectionObserver in your test setup
  */
+
+/* The class IntersectionObserver is defined with a constructor, observe method, and empty unobserve
+and disconnect methods. */
 class IntersectionObserver {
     constructor(callback) {
       this.callback = callback;
