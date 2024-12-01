@@ -5,6 +5,7 @@ const Issues = lazy(() => import('./IssueComponent'));
 const Projects = lazy(() => import('./ProjectComponent'));
 const Reports = lazy(() => import('./ReportComponent'));
 const CompoundPattern = lazy(() => import('./CompoundPattern'));
+const RenderPattern = lazy(() => import('./RenderPattern'));
 const TabHome = () => {
   const [tab, setTab] = useState('issues');
 
@@ -52,7 +53,13 @@ const TabHome = () => {
         <div className="Tab-Content">{<Suspense fallback="Loading...">{Components[tab]}</Suspense>}</div>
       </div>
       <div>
+        <h1>Compound Pattern</h1>
         <CompoundPattern />
+      </div>
+      <div>
+      <hr />
+      <h1>Render Pattern</h1>
+        <RenderPattern />
       </div>
     </>
   );

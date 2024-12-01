@@ -71,3 +71,32 @@
     text-decoration: none;
   }
 }
+
+/*  Render Pattern */
+.render {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Avenir Next';
+}
+
+.temp {
+  font-family: 'Avenir Next';
+  font-size: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 0.5rem;
+  border-radius: 10px;
+  margin: 15px;
+  width: 100px;
+}
+
+.input-field-pattern {
+  outline: none;
+  padding: 1em;
+  border-radius: 15px;
+  box-shadow: none;
+  border: 2px solid pink;
+  font-family: 'Avenir Next';
+  font-size: 20px;
+}
