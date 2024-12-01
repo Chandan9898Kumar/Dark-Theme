@@ -6,6 +6,7 @@ const Projects = lazy(() => import('./ProjectComponent'));
 const Reports = lazy(() => import('./ReportComponent'));
 const CompoundPattern = lazy(() => import('./CompoundPattern'));
 const RenderPattern = lazy(() => import('./RenderPattern'));
+const EnhancedMyComponent = lazy(() => import('./HocPattern'));
 const TabHome = () => {
   const [tab, setTab] = useState('issues');
 
@@ -57,9 +58,13 @@ const TabHome = () => {
         <CompoundPattern />
       </div>
       <div>
-      <hr />
-      <h1>Render Pattern</h1>
+        <hr />
+        <h1>Render Pattern</h1>
         <RenderPattern />
+      </div>
+      <hr />
+      <div>
+        <EnhancedMyComponent title="HOC" />
       </div>
     </>
   );
