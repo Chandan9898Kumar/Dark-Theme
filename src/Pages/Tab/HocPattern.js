@@ -59,3 +59,17 @@ const enhancedComponent = higherOrderComponent(WrappedComponent);
 2. higherOrderComponent: The function that enhances the WrappedComponent.
 3. WrappedComponent: The original component that needs enhancement.
 */
+
+//                              Pros
+//  Using the Higher Order Component pattern allows us to keep logic that we want to re-use all in one place.
+//  This reduces the risk of accidentally spreading bugs throughout the application by duplicating code over and over, potentially introducing new bugs each time.
+//  By keeping the logic all in one place, we can keep our code DRY and easily enforce separation of concerns.
+
+//                        Best use-cases for a HOC:
+// 1. The same, uncustomized behavior needs to be used by many components throughout the application.
+// 2. The component can work standalone, without the added custom logic.
+
+//                        Best use-cases for Hooks:
+// 1. The behavior has to be customized for each component that uses it.
+// 2. The behavior is not spread throughout the application, only one or a few components use the behavior.
+// 3. The behavior adds many properties to the component
