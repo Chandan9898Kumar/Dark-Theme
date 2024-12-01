@@ -64,3 +64,10 @@
   min-height: 100%;
   padding: 2rem;
 }
+
+.compTab {
+  &.tab-active {
+    background: palevioletred;
+    text-decoration: none;
+  }
+}
