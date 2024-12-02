@@ -35,3 +35,67 @@ CMD [ "npm", "start" ]
 
 
 # Create a docker-compose.dev.yml. Additionally, we will mount our code in a volume so that our code changes are in sync with the container during development.
+
+
+# NOTE : above code is not multi-stage build. If see its image size then it will be of 500mb.
+# To use multi-stage build , below is the code : This code will reduce the image size from 500 to 300 mb
+
+
+# This is the first stage which is responsible for the installation of dependencies.
+
+# FROM node:14-alpine AS development
+# ENV NODE_ENV development
+# WORKDIR /app
+# COPY package*.json ./
+# RUN npm install
+# COPY . .
+
+# # This is the Second stage : use lightweight runtime image.
+# FROM node:lts-alpine AS developmentTwo
+# WORKDIR /app
+
+# Here it is copying only built files and dependencies from first stage. 
+# COPY --from=development /app /app/
+
+
+# EXPOSE 3000
+
+# CMD [ "npm", "start" ]
+
+
+
+#                   What is the Multi-Stage build here? 👀
+# - We use the previously built files. The thing is Dockerfile is nothing but multiple layers right,
+#  assuming when there are no changes in the first 3 layers, we use the layers of previous builds to reduce spending time for those layers again.
+
+
+
+
+# NOTE:
+
+#    𝐓𝐡𝐞 𝐏𝐨𝐰𝐞𝐫 𝐨𝐟 𝐌𝐮𝐥𝐭𝐢-𝐒𝐭𝐚𝐠𝐞 𝐁𝐮𝐢𝐥𝐝𝐬.
+
+# Large Docker images slow deployments, waste storage, and increase vulnerabilities.
+# Multi-Stage Builds optimize images by splitting the process into stages, keeping only essentials in the final lightweight image, improving speed, security, and maintainability.
+
+#    𝐖𝐡𝐚𝐭 𝐀𝐫𝐞 𝐌𝐮𝐥𝐭𝐢-𝐒𝐭𝐚𝐠𝐞 𝐁𝐮𝐢𝐥𝐝𝐬?
+# Multi-Stage Builds let you use multiple FROM instructions in a single Dockerfile, each representing a different stage.
+# This allows you to compile or build your application in one stage and copy only the necessary output into the final, lightweight image.
+
+#    𝐖𝐡𝐲 𝐔𝐬𝐞 𝐌𝐮𝐥𝐭𝐢-𝐒𝐭𝐚𝐠𝐞 𝐁𝐮𝐢𝐥𝐝𝐬❓
+
+# ✅𝐃𝐫𝐚𝐬𝐭𝐢𝐜𝐚𝐥𝐥𝐲 𝐑𝐞𝐝𝐮𝐜𝐞 𝐈𝐦𝐚𝐠𝐞 𝐒𝐢𝐳𝐞: By excluding unnecessary build dependencies, multi-stage builds keep only the essentials in your final image,
+#  shrinking its size by up to 50% or more.
+
+# ✅𝐄𝐧𝐡𝐚𝐧𝐜𝐞𝐝 𝐒𝐞𝐜𝐮𝐫𝐢𝐭𝐲: A smaller image has fewer layers and dependencies, reducing the attack surface and the risk of vulnerabilities.
+
+# ✅𝐅𝐚𝐬𝐭𝐞𝐫 𝐃𝐞𝐩𝐥𝐨𝐲𝐦𝐞𝐧𝐭𝐬: Smaller images mean quicker downloads and deployments, speeding up your CI/CD pipelines.
+
+# ✅𝐒𝐢𝐦𝐩𝐥𝐢𝐟𝐢𝐞𝐝 𝐌𝐚𝐢𝐧𝐭𝐞𝐧𝐚𝐧𝐜𝐞: With separate stages for building and production, your Docker file becomes cleaner and easier to manage.
+
+
+
+#  𝐖𝐨𝐧𝐝𝐞𝐫𝐢𝐧𝐠 𝐖𝐡𝐲 𝐈𝐭'𝐬 𝐚 𝐆𝐚𝐦𝐞 𝐂𝐡𝐚𝐧𝐠𝐞𝐫❓
+
+# With Multi-Stage Builds, you’re not just reducing image size—you’re also improving security, boosting deployment speeds, and making your Dockerfiles more maintainable.
+#  It’s a win-win for developers and operations teams alike.

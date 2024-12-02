@@ -1,5 +1,5 @@
 #  version : Specifies the version of the Docker Compose file format.
-version: "3.8"
+# version: "3.8"
 
 # services: Defines the services that make up your application. 
 services:
@@ -67,11 +67,15 @@ services:
 # 3. If you want to run only dev-app service only the use below Command :
 # a. docker-compose -f docker-compose.dev.yml up dev-app
 
+# If you want to re-build the same image then use the following command :
+#   docker-compose -f docker-compose.dev.yml up dev-app  --build
+# NOTE : dev-app is a service name. we have to give this service name above.
+
 # 4. If you want to go inside the running container for troubleshooting or manual inspection :
 # a. docker exec -it app-dev-container sh 
 
 # 5. If you want to see the logs of the container
-# a.  docker logs app-dev-container (app-dev-container is conatiners name)
+# a.  docker logs app-dev-container (app-dev-container is containers name)
 
 #  NOTE : on a Windows machine:  -e CHOKIDAR_USEPOLLING=true, it was updating the code inside the container but the changes were not displaying on the browser, use -e WATCHPACK_POLLING=true instead.
 
