@@ -69,4 +69,5 @@ Console Output: The output of screen.debug() can be quite verbose, especially fo
 limit it to specific parts of your component tree.
 
 Using prettyDOM: If you want a more formatted output, you can use prettyDOM from React Testing Library:
+
  */
