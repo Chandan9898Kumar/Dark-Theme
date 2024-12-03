@@ -65,6 +65,17 @@ const CompoundPattern = () => {
 
 export default CompoundPattern;
 
+/*                            Compound Pattern
+The Compound Components pattern in React is a design pattern that allows you to create a set of components that work together as a single unit.
+This pattern helps you manage the state and behavior of the components in a way that keeps them loosely coupled while still allowing them to share context and functionality
+
+
+                          Key Features of Compound Components:
+1. Shared State: The parent component can manage the state and pass it down to the child components.
+2. Explicit Relationships: The components are designed to work together, which makes it clear how they relate to each other.
+3. Flexibility: You can add or remove components without affecting the overall functionality.
+*/
+
 /**
                          Overview of the Compound Component Pattern
 In this pattern, a parent component encapsulates the state and behavior, while child components are responsible for rendering the UI based on that state.
