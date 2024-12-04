@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+//  With the Render Props pattern, we pass components as props to other components. The components that are passed as props can in turn receive props from that component.
 function Input(props) {
   const [value, setValue] = useState('');
 
@@ -159,6 +160,5 @@ while still utilizing the shared logic of the component that provides the render
 // As Hooks changed the way we can add reusability and data sharing to components, they can replace the render props pattern in many cases.
 
 // Since we can’t add lifecycle methods to a render prop, we can only use it on components that don’t need to alter the data they receive.
-
 
 //  The common way to share code among several components, is by using the Higher Order Component or Render Props pattern.
