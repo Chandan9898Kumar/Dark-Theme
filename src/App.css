@@ -4,6 +4,15 @@
   box-sizing: border-box;
 }
 
+/* You can customize transitions using CSS pseudo-elements. Define styles for ::view-transition-old and ::view-transition-new to control how elements appear during transitions: */
+::view-transition-old {
+  animation-duration: 1s;
+}
+
+::view-transition-new {
+  animation-duration: 2s;
+}
+
 body {
   margin: 0;
   padding: 0;

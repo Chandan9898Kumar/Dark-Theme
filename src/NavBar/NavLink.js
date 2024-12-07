@@ -11,18 +11,21 @@ const NavLinks = () => {
         <NavLink
           to="/"
           className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : 'In-Active')}
+          unstable_viewTransition
         >
           Home Page
         </NavLink>
         <NavLink
           to="/account"
           className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : 'In-Active')}
+          unstable_viewTransition
         >
           Account Page
         </NavLink>
         <NavLink
           to="/service"
           className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : 'In-Active')}
+          unstable_viewTransition
         >
           Service Page
         </NavLink>
@@ -30,6 +33,7 @@ const NavLinks = () => {
         <NavLink
           to="/country"
           className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : 'In-Active')}
+          unstable_viewTransition
         >
           Country
         </NavLink>
@@ -37,6 +41,7 @@ const NavLinks = () => {
         <NavLink
           to="/tab"
           className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : 'In-Active')}
+          unstable_viewTransition
         >
           Tab
         </NavLink>
@@ -63,3 +68,14 @@ const navigationActive = ({ isActive ,isPending}) => {
 <NavLink style={navigationActive} to="contact">Contact</NavLink>
 
  */
+
+/*
+If you're using React Router, you can enhance link transitions by adding the unstable_viewTransition prop to <Link> or <NavLink> components:
+
+<NavLink to="/new-route" unstable_viewTransition>
+  Navigate
+</NavLink>
+
+
+This approach allows you to append a class during transitions and customize styles accordingly.
+*/
