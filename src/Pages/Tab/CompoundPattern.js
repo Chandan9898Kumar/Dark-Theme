@@ -1,5 +1,5 @@
 import React, { useState, createContext, useContext } from 'react';
-
+import { flushSync } from 'react-dom';
 // Create a context to share the active tab state
 const TabContext = createContext();
 
@@ -27,7 +27,17 @@ const Tab = ({ index, label }) => {
     <button
       className={`compTab ${activeTab === index ? 'tab-active' : ''}`}
       style={tabStyle}
-      onClick={() => setActiveTab(index)}
+      onClick={() => {
+        if (document.startViewTransition) {
+          document.startViewTransition(() => {
+            flushSync(() => {
+              setActiveTab(index);
+            });
+          });
+        } else {
+          setActiveTab(index);
+        }
+      }}
     >
       {label}
     </button>

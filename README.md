@@ -282,3 +282,85 @@ const HomePage = lazyWithRetry(() => import('./HomePage'));
 ```
 
 `What it does is basically tries to load the asset within a try...catch block, and if throws any error, it just simply reloads the whole app. I know CDNs can solve this problem with a better way, but just in case your app doesn’t use a CDN or the CDN is down itself. If there is a better solution or enhancement to this, please comment below and let me know, happy to discuss.`
+
+### View Transition API in React App.
+
+The View Transition API is a new feature on web that simplifies the process of creating animated transitions for shared element. Previously, achieving smooth transitions for shared element on the web was a complex task. However, with the introduction of this API, we can now easily animate shared element, allows us to create engaging and fluid navigational experiences, similar to those found in mobile applications.
+
+`Example :`
+
+```js
+import * as React from 'react';
+import { flushSync } from 'react-dom';
+
+const App = () => {
+  const [isThumbnail, setIsThumbnail] = React.useState(true);
+
+  const handleMove = () => {
+    document.startViewTransition(() => {
+      flushSync(() => {
+        setIsThumbnail((prev) => !prev);
+      });
+    });
+  };
+
+  return (
+    <div>
+      <div className="top-bar">
+        <div className="top-bar-content">
+          <h1>Move Cat</h1>
+          <button onClick={handleMove}>Move</button>
+        </div>
+        {isThumbnail && (
+          <img
+            src="https://res.cloudinary.com/djzsjzasg/image/upload/c_scale,w_300/v1678947391/malcolm-kee/meow_dtsn8h.png"
+            alt="cat"
+            className="cat-img thumbnail"
+          />
+        )}
+      </div>
+      {!isThumbnail && (
+        <div className="cat-details">
+          <img
+            src="https://res.cloudinary.com/djzsjzasg/image/upload/c_scale,w_500/v1678947391/malcolm-kee/meow_dtsn8h.png"
+            alt="cat"
+            className="cat-img detailed-img"
+          />
+          <div className="cat-desc">
+            <h2>Cat Details</h2>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default App;
+
+
+
+### React renders state changes asynchronously, we need to wrap the state-setter function with `flushSync` to force the state changes to be applied synchronously.
+
+
+### Using Progressive Enhancement Technique with View Transition.
+
+To ensure that your application still functions properly on browsers that do not support the View Transition API, you can use the progressive enhancement technique. This involves checking whether document.startViewTransition is available before using it. If it’s not available, then no animation will be applied.
+
+  const handleMove = () => {
+    if (document.startViewTransition) {
+      document.startViewTransition(() => {
+        flushSync(() => {
+          setIsThumbnail((prev) => !prev);
+        });
+      });
+    } else {
+      setIsThumbnail((prev) => !prev);
+    }
+  };
+
+
+
+### NOTE :
+
+In conclusion, the View Transition API offers a straightforward way to create smooth animations for web applications. By implementing it in your React projects and using progressive enhancement, you can cover a wider range of browsers while enhancing user experience.
+```
