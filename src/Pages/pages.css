@@ -239,13 +239,20 @@ h1 {
 }
 
 .Go-Back {
-  font-size: 25px;
-  font-weight: 500;
-  border: -r;
-  border-radius: 10px;
-  padding: 5px 5px;
+  background-color: #f3f7fe;
+  color: #3b82f6;
+  border: none;
   cursor: pointer;
-  margin: auto;
+  border-radius: 8px;
+  width: 100px;
+  height: 45px;
+  transition: 0.3s;
+  font-size: 20px;
+  &:hover {
+    background-color: #3b82f6;
+    box-shadow: 0 0 0 5px #3b83f65f;
+    color: #fff;
+  }
 }
 
 dt {
