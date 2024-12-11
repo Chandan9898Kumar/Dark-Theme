@@ -238,13 +238,14 @@ h1 {
   text-wrap: pretty;
 }
 
-.Go-Back {
+.Go-Back,
+.add-btn {
   background-color: #f3f7fe;
   color: #3b82f6;
   border: none;
   cursor: pointer;
   border-radius: 8px;
-  width: 100px;
+  padding: 10px 10px;
   height: 45px;
   transition: 0.3s;
   font-size: 20px;
@@ -252,7 +253,16 @@ h1 {
     background-color: #3b82f6;
     box-shadow: 0 0 0 5px #3b83f65f;
     color: #fff;
-  }
+  };
+  text-transform: uppercase;
+}
+
+.add-btn-class {
+  display: block;
+  text-align: right;
+  padding: 20px 20px;
+  margin: 10px auto;
+  
 }
 
 dt {

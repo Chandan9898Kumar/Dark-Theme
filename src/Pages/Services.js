@@ -49,7 +49,9 @@ const ServicePage = () => {
   return (
     <div className="Page-Container">
       <ShowHeader />
-      <button onClick={(event) => handleAdd(event, true)}>Add Item</button>
+      <div className='add-btn-class'>
+      <button className='add-btn' onClick={(event) => handleAdd(event, true)}>Add Item</button>
+      </div>
       {!!data?.length && <ShowData data={data} handleEdit={handleEdit} handleDelete={handleDelete} />}
       {isEditModalOPen && (
         <AddEditModal
