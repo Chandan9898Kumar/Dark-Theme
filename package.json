@@ -15,7 +15,15 @@
     "react-router-dom": "^6.26.2",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4",
-    "preload-webpack-plugin": "2.3.0"
+    "preload-webpack-plugin": "2.3.0",
+    "@emotion/cache": "^11.13.1",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@fontsource-variable/dm-sans": "^5.0.7",
+    "@fontsource/barlow": "^5.0.14",
+    "@iconify/react": "^5.0.2",
+    "@mui/lab": "^5.0.0-alpha.173",
+    "@mui/material": "^5.16.7"
   },
   "scripts": {
     "start": "react-scripts start",

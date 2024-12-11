@@ -11,21 +11,21 @@ const NavLinks = () => {
         <NavLink
           to="/"
           className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : 'In-Active')}
-          unstable_viewTransition
+          
         >
           Home Page
         </NavLink>
         <NavLink
           to="/account"
           className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : 'In-Active')}
-          unstable_viewTransition
+          
         >
           Account Page
         </NavLink>
         <NavLink
           to="/service"
           className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : 'In-Active')}
-          unstable_viewTransition
+          
         >
           Service Page
         </NavLink>
@@ -33,7 +33,7 @@ const NavLinks = () => {
         <NavLink
           to="/country"
           className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : 'In-Active')}
-          unstable_viewTransition
+          
         >
           Country
         </NavLink>
@@ -41,7 +41,7 @@ const NavLinks = () => {
         <NavLink
           to="/tab"
           className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : 'In-Active')}
-          unstable_viewTransition
+          
         >
           Tab
         </NavLink>
