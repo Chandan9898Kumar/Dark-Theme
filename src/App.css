@@ -24,10 +24,15 @@ body {
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-  background-color: beige;
-  padding: 15px 15px;
+  padding: 10px 10px;
   font-size: 18px;
   font-weight: 500;
+  border-bottom: 1px solid slategrey;
+  border-radius: 10px;
+  margin: 10px auto;
+  font-size: 20px;
+  font-weight: 500;
+  text-shadow: 2px 2px 5px darkslategrey;
 }
 
 .Nav-Links {
@@ -42,7 +47,6 @@ body {
 
 .active {
   color: green;
-  text-decoration: underline;
 }
 
 .In-Active {

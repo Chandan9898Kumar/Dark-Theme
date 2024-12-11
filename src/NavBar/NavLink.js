@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import '../App.css';
 import { useThemeContext } from '../ContextApi/ThemeManager';
+import Switch from '@mui/material/Switch';
+
 const NavLinks = () => {
   const { isThemeDark, toggleTheme } = useThemeContext();
 
@@ -11,21 +13,21 @@ const NavLinks = () => {
         <NavLink
           to="/"
           className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : 'In-Active')}
-          
+          style={{textDecoration:'none'}}
         >
           Home Page
         </NavLink>
         <NavLink
           to="/account"
           className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : 'In-Active')}
-          
+          style={{textDecoration:'none'}}
         >
           Account Page
         </NavLink>
         <NavLink
           to="/service"
           className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : 'In-Active')}
-          
+          style={{textDecoration:'none'}}
         >
           Service Page
         </NavLink>
@@ -33,22 +35,23 @@ const NavLinks = () => {
         <NavLink
           to="/country"
           className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : 'In-Active')}
-          
+          style={{textDecoration:'none'}}
         >
-          Country
+          Country Page
         </NavLink>
 
         <NavLink
           to="/tab"
           className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'active' : 'In-Active')}
-          
+          style={{textDecoration:'none'}}
         >
-          Tab
+          Tab Page
         </NavLink>
       </div>
-      <div className="Input-Checkbox">
+      <Switch checked={isThemeDark} onChange={toggleTheme} inputProps={{ 'aria-label': 'controlled' }} />
+      {/* <div className="Input-Checkbox">
         <input type="checkbox" checked={isThemeDark} onChange={toggleTheme} />
-      </div>
+      </div> */}
     </div>
   );
 };

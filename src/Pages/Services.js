@@ -1,6 +1,7 @@
 import React, { memo, useState, useCallback } from 'react';
 import './pages.css';
 import AddEditModal from '../Components/AddEditModal';
+import { flushSync } from 'react-dom';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
@@ -77,8 +78,17 @@ const ServicePage = () => {
   }, []);
 
   const handleDelete = (event = {}, item, index) => {
-    setData(data.filter((removeItem) => removeItem.id !== item.id));
-    setOpen(true);
+    if (document.startViewTransition) {
+      document.startViewTransition(() => {
+        flushSync(() => {
+          setData(data.filter((removeItem) => removeItem.id !== item.id));
+          setOpen(true);
+        });
+      });
+    } else {
+      setData(data.filter((removeItem) => removeItem.id !== item.id));
+      setOpen(true);
+    }
   };
 
   return (
