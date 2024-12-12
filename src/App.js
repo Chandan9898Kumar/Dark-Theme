@@ -18,7 +18,9 @@ const HomePage = lazyWithRetry(() => import('./Pages/Home'));
 const AccountPage = lazyWithRetry(() => import(/* webpackPrefetch: true */ './Pages/Account'));
 const ServicePage = lazyWithRetry(() => import('./Pages/Services'));
 const AccountInformationPage = lazyWithRetry(() => import('./Pages/AccountInformation'));
-const TabHome = lazy(() => import(/* webpackPreload: true */'./Pages/Tab/TabHome'));
+const TabHome = lazy(() => import(/* webpackPreload: true */ './Pages/Tab/TabHome'));
+const NotFoundView = lazyWithRetry(() => import('./Error/NotFound'));
+
 function App() {
   return (
     <BrowserRouter future={{ v7_startTransition: true }}>
@@ -42,7 +44,7 @@ function App() {
 
           <Route path="/tab" element={<TabHome />} />
 
-          <Route path="*" element={<Error />} />
+          <Route path="*" element={<NotFoundView />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
@@ -50,14 +52,6 @@ function App() {
 }
 
 export default App;
-
-const Error = () => {
-  return (
-    <div style={{ color: 'red' }}>
-      <h1>NOT FOUND</h1>
-    </div>
-  );
-};
 
 /**
 // {
