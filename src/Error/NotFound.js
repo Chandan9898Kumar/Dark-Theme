@@ -16,6 +16,7 @@ const NotFoundView = () => {
     top: '100px',
     position: 'relative',
   };
+  
   return (
     <Container style={style}>
       <Typography variant="h3" sx={{ mb: 2 }}>
