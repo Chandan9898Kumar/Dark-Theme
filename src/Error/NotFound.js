@@ -20,6 +20,7 @@ const NotFoundView = () => {
   
   return (
     <Container style={style}>
+    
       <Typography variant="h3" sx={{ mb: 2 }}>
         Sorry, page not found!
       </Typography>
