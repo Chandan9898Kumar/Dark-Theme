@@ -4,6 +4,7 @@ const ScrollerOnElement = ({ data, item, setItem, isLoading, fetchData }) => {
   const elem = useRef('');
 
   const handleScroll = () => {
+    
     if (elem.current.scrollTop + elem.current.clientHeight >= elem.current.scrollHeight) {
       let nextValue = item + 10;
       setItem((prev) => prev + 10);
