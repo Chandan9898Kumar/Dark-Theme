@@ -46,7 +46,7 @@ const ShowLoading = () => {
 const ShowData = ({ data }) => {
   return (
     <div className="card-group">
-      {data.map((item) => {
+      {data?.map((item) => {
         return (
           <Link key={item.id} rel="prefetch" to={`/account/${item.id}`} className="card transition">
             <img
