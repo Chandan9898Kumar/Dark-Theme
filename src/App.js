@@ -70,7 +70,7 @@ This can be the case on subsequent requests or page navigation that a user is li
 A prefetched resource is fetched when the browser is idle and has calculated that it's got enough bandwidth, after which it caches the prefetched resource.
 When the client actually needs the resource, it can easily get it from cache instead of having to make a request to the server.
 
-                              Implementation
+                           Implementation
 We can prefetch a resource by explicitly adding it to the head of the html document.
 
 1. <link rel="prefetch" href="./about.bundle.js" />
