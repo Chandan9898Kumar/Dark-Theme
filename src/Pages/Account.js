@@ -3,6 +3,7 @@ import './pages.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { setData } from '../Redux/Account/AccountRedux';
 import { Link } from 'react-router-dom';
+
 const AccountPage = () => {
   const dispatch = useDispatch();
   const { data, isLoading, isError } = useSelector((state) => state.AccountPage);
