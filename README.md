@@ -364,3 +364,41 @@ To ensure that your application still functions properly on browsers that do not
 
 In conclusion, the View Transition API offers a straightforward way to create smooth animations for web applications. By implementing it in your React projects and using progressive enhancement, you can cover a wider range of browsers while enhancing user experience.
 ```
+
+### To detect page load times in a React application, you can utilize the Performance API, specifically the PerformanceNavigationTiming interface. This approach allows you to measure how long it takes for your application to load and become interactive.
+
+`Using Performance API`
+
+1. **Basic Implementation**
+   You can track the page load time by listening for the load event and then accessing performance metrics. Here’s a simple example:
+
+```js
+window.addEventListener('load', () => {
+  const [navigationEntry] = performance.getEntriesByType('navigation');
+  console.log(`Page Load Time: ${navigationEntry.loadEventEnd} ms`);
+});
+```
+
+This code captures the load time once the window has fully loaded. However, ensure to check if navigationEntry is defined to avoid errors if no entries are present.
+
+2. **Handling Route Changes in SPAs**
+
+In single-page applications (SPAs) like those built with React, route changes do not trigger a full page reload. Therefore, you need to measure load times on each route change. You can achieve this by using React Router's hooks or lifecycle methods. For example:
+
+```js
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
+const usePageLoadTime = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleLoadTime = () => {
+      const [navigationEntry] = performance.getEntriesByType('navigation');
+      console.log(`Load time for ${location.pathname}: ${navigationEntry.loadEventEnd} ms`);
+    };
+
+    handleLoadTime();
+  }, [location]);
+};
+```
