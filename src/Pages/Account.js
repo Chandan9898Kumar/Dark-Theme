@@ -26,10 +26,16 @@ const AccountPage = () => {
   }, []);
 
   return (
-    <div className="Page-Container">
+    <div className="Page-Container" role="section">
       <ShowHeader />
-      <div className="Item-Main">{isLoading ? <ShowLoading /> : !!data?.length && <ShowData data={data} />}</div>
-      {isError && <div>{isError}</div>}
+      <div className="Item-Main" role="items">
+        {isLoading ? <ShowLoading /> : !!data?.length && <ShowData data={data} />}
+      </div>
+      {isError && (
+        <div role="alert" aria-live="assertive">
+          {isError}
+        </div>
+      )}
     </div>
   );
 };
@@ -37,11 +43,11 @@ const AccountPage = () => {
 export default memo(AccountPage);
 
 const ShowHeader = () => {
-  return <h1>This is Account Page Shows Images</h1>;
+  return <h1 role="heading">This is Account Page Shows Images</h1>;
 };
 
 const ShowLoading = () => {
-  return <div>Please Wait while your data is being loaded...</div>;
+  return <div role="message">Please Wait while your data is being loaded...</div>;
 };
 
 const ShowData = ({ data }) => {
@@ -49,14 +55,15 @@ const ShowData = ({ data }) => {
     <div className="card-group">
       {data?.map((item) => {
         return (
-          <Link key={item.id} rel="prefetch" to={`/account/${item.id}`} className="card transition">
-            <img
-              src={item.images[0]}
-              alt={`${item.title}`}
-              loading="lazy"
-              width={250}
-              height={350}
-            />
+          <Link
+            key={item.id}
+            rel="prefetch"
+            to={`/account/${item.id}`}
+            className="card transition"
+            role="listitem"
+            aria-label={item.title}
+          >
+            <img src={item.images[0]} alt={`${item.title}`} loading="lazy" width={250} height={350} />
             <label>{item.title}</label>
           </Link>
         );
