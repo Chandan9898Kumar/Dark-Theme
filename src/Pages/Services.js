@@ -92,7 +92,7 @@ const ServicePage = () => {
   };
 
   return (
-    <div className="Page-Container">
+    <div className="Page-Container" role='display application'>
       <ShowHeader />
 
       <ButtonSection handleAdd={handleAdd} />
