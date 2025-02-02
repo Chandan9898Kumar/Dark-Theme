@@ -11,10 +11,10 @@ const AddEditModal = ({
   isEdit = false,
   isAdd = false,
 }) => {
-  const [id, setId] = useState(userDetails?.id ? userDetails.id : '');
-  const [name, setName] = useState(userDetails?.name ? userDetails.name : '');
-  const [description, setDescription] = useState(userDetails?.description ? userDetails.description : '');
-  const [price, setPrice] = useState(userDetails?.price ? userDetails.price : '');
+  const [id, setId] = useState(userDetails?.id ?? '');
+  const [name, setName] = useState(userDetails?.name ?? '');
+  const [description, setDescription] = useState(userDetails?.description ?? '');
+  const [price, setPrice] = useState(userDetails?.price ?? '');
 
   const [message, setMessage] = useState('');
 
@@ -91,11 +91,11 @@ const AddEditModal = ({
           />
         </div>
 
-        <div className="modal-footer">
+        <div className="modal-footer" role="footer-buttons">
           <button onClick={(event) => onCloseModal(event, false)}>Cancel</button>
           <button onClick={(event) => handleProceed(event)}>Proceed</button>
         </div>
-        {message && <h1>{message}</h1>}
+        {message && <h1 role="message">{message}</h1>}
       </div>
     </div>
   );
