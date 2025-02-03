@@ -42,6 +42,7 @@ COPY . .
 # 3. It doesn't automatically map the port to your host machine
 EXPOSE 3000
 
+
 # This Specifies the command to Start the app
 CMD [ "npm", "start" ]
 
