@@ -25,7 +25,12 @@ RUN npm install
 # In that case, this line will work as a reminder that we need to copy the source code into the container.
 COPY . .
 
-# Expose the port the app runs on. This Informs Docker that the container will use port 3000
+# Expose the port the app runs on. This Informs Docker that the container will use port 3000.
+# The EXPOSE 3000 instruction in a Dockerfile is a form of documentation that declares which port(s) the container will listen on at runtime. In this case, it indicates that the application inside the container will be listening on port 3000.
+# However, it's important to understand that:
+# 1. EXPOSE is primarily documentation - it doesn't actually publish or open the port
+# 2. It serves as metadata about the container
+# 3. It doesn't automatically map the port to your host machine
 EXPOSE 3000
 
 # This Specifies the command to Start the app
