@@ -3,8 +3,17 @@
 # This tells Docker to use an existing Node.js image as the base for our custom image. This base image has Node.js pre-installed.
 FROM node:14-alpine AS development
 
-# We set the node environment variable
+# We set the node environment variable.
+# The ENV NODE_ENV=development instruction in a Dockerfile sets an environment variable that affects how Node.js applications behave.
+# 1. Creates an environment variable named NODE_ENV.
+# 2. Sets its value to "development".
+# 3. This variable persists inside the container.
+# 4. inside you code you check this by : console.log( process.env.NODE_ENV ) 
+
 ENV NODE_ENV development
+
+# We You can override it when running the container :
+# docker run -e NODE_ENV=production your-image-name
 
 # Set the current working directory inside the docker container to app
 WORKDIR /app
